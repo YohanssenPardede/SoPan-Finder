@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">SoPan Finder</string>
     <string name="findsopan">Tap to find SoPan</string>
+    <string name="findsopan2">Finding your SoPan</string>
+    <string name="wait">Please wait a moment...</string>
     <string name="home_desc_1">SoPan will track your location and find the most suitable solar panel for you!</string>
     <string name="specification">Specification</string>
     <string name="spec_detail">Type: Polycrystalline \nsolar cells Voltage at Pmax (Vmp): 18V\nCurrent at Pmax (Imp): 2.78A \nOpen-circuit voltage (Voc): 22.4V \nShort-circuit current (Isc): 3.24A \nSize: 540x 670x 30 mm</string>
     <string name="instructions">Instructions</string>
     <string name="inst_detail">1. Find your roof \n2. Stick solar panel using glue \n3. Voila free electricity</string>
     <string name="back">Back</string>
+
 </resources>
