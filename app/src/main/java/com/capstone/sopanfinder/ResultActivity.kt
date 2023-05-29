@@ -3,6 +3,9 @@ package com.capstone.sopanfinder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
@@ -22,8 +25,12 @@ class ResultActivity : AppCompatActivity() {
             binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
         }
 
+
         binding.fab.setOnClickListener{
             startActivity(Intent(this@ResultActivity, HomeActivity::class.java))
         }
     }
+
+
+
 }

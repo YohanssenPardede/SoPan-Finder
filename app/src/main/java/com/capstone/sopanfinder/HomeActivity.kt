@@ -4,11 +4,12 @@ package com.capstone.sopanfinder
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
 import java.util.*
@@ -56,6 +57,19 @@ class HomeActivity : AppCompatActivity() {
             R.id.profile_menu -> startActivity(Intent(this@HomeActivity, ProfileActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            finishAffinity()
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
 
