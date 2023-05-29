@@ -3,9 +3,6 @@ package com.capstone.sopanfinder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
