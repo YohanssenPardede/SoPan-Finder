@@ -29,9 +29,16 @@ class HomeActivity : AppCompatActivity() {
                 binding.homeDesc.setText(R.string.wait)
 
             Timer().schedule(2000) {
+                binding.searchBtn.clearAnimation()
                 startActivity(Intent(this@HomeActivity, ResultActivity::class.java))
             }
         }
+    }
+
+    override fun onResume(){
+        super.onResume()
+        binding.homeStatus.setText(R.string.findsopan)
+        binding.homeDesc.setText(R.string.home_desc_1)
     }
 
 
