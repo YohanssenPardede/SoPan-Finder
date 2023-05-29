@@ -14,6 +14,10 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+
         binding.favoriteBtn.setOnClickListener {
             binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
         }
