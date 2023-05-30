@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.capstone.sopanfinder">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,16 +16,22 @@
         android:theme="@style/Theme.SoPanFinder"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".view.signup.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ResultActivity"
+            android:name=".view.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".view.favorite.FavoriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.result.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -34,6 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

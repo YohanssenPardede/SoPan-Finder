@@ -1,9 +1,11 @@
-package com.capstone.sopanfinder
+package com.capstone.sopanfinder.view.result
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
+import com.capstone.sopanfinder.view.home.HomeActivity
 
 class ResultActivity : AppCompatActivity() {
 

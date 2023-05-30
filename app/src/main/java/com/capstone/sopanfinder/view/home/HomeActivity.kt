@@ -1,4 +1,4 @@
-package com.capstone.sopanfinder
+package com.capstone.sopanfinder.view.home
 
 
 import android.content.Intent
@@ -11,7 +11,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.sopanfinder.view.profile.ProfileActivity
+import com.capstone.sopanfinder.R
+import com.capstone.sopanfinder.view.result.ResultActivity
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
+import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import java.util.*
 import kotlin.concurrent.schedule
 
