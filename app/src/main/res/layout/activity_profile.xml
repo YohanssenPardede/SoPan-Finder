@@ -7,8 +7,22 @@
     tools:context=".view.profile.ProfileActivity">
 
     <TextView
+        android:id="@+id/temp_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PROFILE ACTIVITY"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/name"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,4 +30,8 @@
     <string name="success_signup">Sign Up Successful. Try logging into your account.</string>
     <string name="login_failed">Login Failed</string>
     <string name="minimal_characters">Password must contain minimal 8 characters</string>
+
+    <!-- ProfileActivity -->
+    <string name="logout">Logout</string>
+    <string name="success_logout">Logout successful</string>
 </resources>

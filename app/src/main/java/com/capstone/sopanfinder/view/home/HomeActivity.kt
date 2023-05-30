@@ -15,7 +15,9 @@ import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.view.result.ResultActivity
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
+import com.capstone.sopanfinder.preference.UserPreference
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
+import com.capstone.sopanfinder.view.login.LoginActivity
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -28,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        loginCheck()
 
         binding.searchBtn.setOnClickListener{
             val animation: Animation =
@@ -41,6 +43,15 @@ class HomeActivity : AppCompatActivity() {
                 binding.searchBtn.clearAnimation()
                 startActivity(Intent(this@HomeActivity, ResultActivity::class.java))
             }
+        }
+    }
+
+    private fun loginCheck() {
+        if (UserPreference.getInstance(this).isLoggedIn) {
+            supportActionBar?.title = StringBuilder("Hello, ").append(UserPreference.getInstance(this).user.name)
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 
