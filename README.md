@@ -18,7 +18,7 @@ products related to the solar panel recommended by the system.
 
 ## Team Member
 | Student ID | Name | University | Path |
-| ----------- | :---------: | :----------: | :----------: |
+| ----------- | :--------- | :----------: | :----------: |
 | A264DSY1409 | Christine | Universitas Multimedia Nusantara Jakarta | Mobile Developer |
 | A264DSY1420 | Ela Setiorini | Universitas Multimedia Nusantara Jakarta | Mobile Developer |
 | C088DSY3277 | Nisa Agni Afifah | Sekolah Tinggi Teknologi Cipasung | Cloud Computing|
