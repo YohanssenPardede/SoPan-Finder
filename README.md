@@ -25,3 +25,9 @@ products related to the solar panel recommended by the system.
 | C240DSX2669 | Rizki Zulfian Nasrul Muna | Universitas Mataram | Cloud Computing |
 | M350DSX0236 | Yohanssen Pradana Pardede | Universitas Sumatera Utara | Machine Learning |
 | M350DSY0442 | Nasywa Choiriana Safitri | Universitas Sumatera Utara | Machine Learning |
+
+### Branch
+Our repository has 3 branches:
+machine-learning to see the progress of machine learning.
+back-end_API to see the progress of Cloud Computing
+mobile-dev to see the progress of Mobile Developer
