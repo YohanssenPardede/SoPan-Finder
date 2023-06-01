@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityMapsBinding
+import com.capstone.sopanfinder.view.graph.GraphActivity
+import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.result.ResultActivity
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -52,8 +54,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
 
         binding.confirmButton.setOnClickListener{
-            startActivity(Intent(this@MapsActivity, ResultActivity::class.java))
+            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
         }
 
+        binding.noButton.setOnClickListener{
+            startActivity(Intent(this@MapsActivity, HomeActivity::class.java))
+        }
     }
 }

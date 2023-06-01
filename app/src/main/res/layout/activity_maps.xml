@@ -29,15 +29,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Please press CONFIRM if your location is accurate"
+                    android:layout_gravity="center"
+                    android:text="Is your location accurate?"
                     android:layout_marginBottom="10dp"/>
                 <Button
                     android:id="@+id/confirm_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="CONFIRM"/>
+                    android:text="YES"/>
+                <Button
+                    android:id="@+id/no_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:backgroundTint="@color/red"
+                    android:text="NO"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
