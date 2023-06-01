@@ -46,10 +46,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.confirmButton.setOnClickListener{
             startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
+            finish()
         }
 
         binding.noButton.setOnClickListener{
             startActivity(Intent(this@MapsActivity, HomeActivity::class.java))
+            finish()
         }
     }
 }

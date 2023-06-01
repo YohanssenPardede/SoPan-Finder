@@ -51,7 +51,6 @@ class HomeActivity : AppCompatActivity() {
                 binding.homeStatus.setText(R.string.findsopan2)
                 binding.homeDesc.setText(R.string.wait)
 
-
             Timer().schedule(2000) {
                 binding.searchBtn.clearAnimation()
 
@@ -90,7 +89,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
     private fun loginCheck() {
         if (UserPreference.getInstance(this).isLoggedIn) {
             supportActionBar?.title = StringBuilder("Hello, ").append(UserPreference.getInstance(this).user.name)
@@ -119,16 +117,8 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            finishAffinity()
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show()
-
-        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        super.onBackPressed()
+        finishAffinity()
     }
 }

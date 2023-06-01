@@ -18,11 +18,9 @@
         android:theme="@style/Theme.SoPanFinder"
         tools:targetApi="31">
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAqByNTmmfLqIrZXjXlMVA0C3toWrX9Mo4" />
-
+            android:value="AIzaSyD9peeqLbchMQgH3jTJBhEgat9nqeB9m-E" />
 
         <activity
             android:name=".view.splashscreen.SplashScreenActivity"

@@ -24,12 +24,16 @@ class ResultActivity : AppCompatActivity() {
             binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
         }
 
-
         binding.fab.setOnClickListener{
             startActivity(Intent(this@ResultActivity, HomeActivity::class.java))
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            finish()
         }
     }
 
-
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        finish()
+    }
 }

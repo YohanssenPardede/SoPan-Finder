@@ -19,10 +19,12 @@ class GraphActivity : AppCompatActivity() {
 
         binding.viewSopan.setOnClickListener{
             startActivity(Intent(this@GraphActivity, ResultActivity::class.java))
+            finish()
         }
 
         binding.noButton.setOnClickListener{
             startActivity(Intent(this@GraphActivity, HomeActivity::class.java))
+            finishAffinity()
         }
     }
 }
