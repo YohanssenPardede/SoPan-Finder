@@ -34,4 +34,5 @@
     <!-- ProfileActivity -->
     <string name="logout">Logout</string>
     <string name="success_logout">Logout successful</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

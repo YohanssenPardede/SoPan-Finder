@@ -14,6 +14,7 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/ic_arrow_back"
         app:backgroundTint="@color/white"
+        android:contentDescription="@string/back"
         app:fabCustomSize="50dp"
         app:elevation="10dp"
         app:borderWidth="0dp"
