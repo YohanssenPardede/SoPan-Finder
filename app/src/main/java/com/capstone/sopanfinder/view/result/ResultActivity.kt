@@ -1,11 +1,18 @@
 package com.capstone.sopanfinder.view.result
 
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
+import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
+import com.capstone.sopanfinder.view.profile.ProfileActivity
+
 
 class ResultActivity : AppCompatActivity() {
 
@@ -16,20 +23,42 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
+
+
+        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.ab_gradient))
+        supportActionBar?.setElevation(0F)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setTitle(Html.fromHtml("<font color=\"transparent\">" + "" + "</font>"));
+
+
+//        if (supportActionBar != null) {
+//            supportActionBar!!.hide()
+//        }
 
         binding.favoriteBtn.setOnClickListener {
             binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
         }
 
-        binding.fab.setOnClickListener{
-            startActivity(Intent(this@ResultActivity, HomeActivity::class.java))
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            finish()
-        }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favorite_menu -> startActivity(Intent(this@ResultActivity, FavoriteActivity::class.java))
+            R.id.profile_menu -> startActivity(Intent(this@ResultActivity, ProfileActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
