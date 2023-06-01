@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.Animation
@@ -77,8 +78,13 @@ class HomeActivity : AppCompatActivity() {
         task.addOnSuccessListener {
             if(it!= null){
                 Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
+                Log.d("TAG", "${it.latitude} ${it.longitude}")
+
                 lat = it.latitude
                 lon = it.longitude
+
+            }else{
+                Log.d("TAG", "Unable to fetch location")
 
             }
         }
