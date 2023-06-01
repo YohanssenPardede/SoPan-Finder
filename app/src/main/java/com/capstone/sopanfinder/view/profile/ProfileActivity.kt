@@ -22,8 +22,9 @@ class ProfileActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             UserPreference.getInstance(this).clearSession()
             Toast.makeText(this, resources.getString(R.string.success_logout), Toast.LENGTH_SHORT).show()
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            finishAffinity()
         }
     }
 }

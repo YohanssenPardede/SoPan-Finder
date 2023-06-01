@@ -1,6 +1,5 @@
 package com.capstone.sopanfinder.view.home
 
-
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -26,13 +25,12 @@ import com.google.android.gms.location.LocationServices
 import java.util.*
 import kotlin.concurrent.schedule
 
-
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    lateinit var fusedLocationProviderClient : FusedLocationProviderClient
+    private lateinit var fusedLocationProviderClient : FusedLocationProviderClient
 
-    var lat : Double = 0.0
-    var lon : Double = 0.0
+    private var lat : Double = 0.0
+    private var lon : Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +38,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
 
         loginCheck()
 
@@ -128,6 +125,4 @@ class HomeActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
-
-
 }
