@@ -143,20 +143,6 @@ class LoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-
-    private var doubleBackToExitPressedOnce = false
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            finishAffinity()
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show()
-
-        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
-    }
-
     companion object {
         private const val TAG = "LoginActivity"
     }
