@@ -2,14 +2,8 @@ package com.capstone.sopanfinder.view.favorite
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.sopanfinder.R
-import com.capstone.sopanfinder.api.Favorites
-import com.capstone.sopanfinder.api.ListStory
 import com.capstone.sopanfinder.databinding.ItemFavoriteBinding
 import com.capstone.sopanfinder.view.result.ResultActivity
 

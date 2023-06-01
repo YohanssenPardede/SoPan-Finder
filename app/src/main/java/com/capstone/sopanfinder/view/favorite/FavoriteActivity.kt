@@ -3,13 +3,10 @@ package com.capstone.sopanfinder.view.favorite
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telecom.TelecomManager.EXTRA_LOCATION
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.sopanfinder.R
-import com.capstone.sopanfinder.api.Favorites
-import com.capstone.sopanfinder.api.ListStory
 import com.capstone.sopanfinder.databinding.ActivityFavoriteBinding
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.profile.ProfileActivity

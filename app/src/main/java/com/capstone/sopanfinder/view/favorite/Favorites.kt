@@ -1,4 +1,4 @@
-package com.capstone.sopanfinder.api
+package com.capstone.sopanfinder.view.favorite
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
