@@ -34,5 +34,46 @@
     <!-- ProfileActivity -->
     <string name="logout">Logout</string>
     <string name="success_logout">Logout successful</string>
+
+    <!-- MapsActivity -->
     <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- ResultActivity -->
+    <string name="solar_panel">Solar Panel</string>
+    <string name="penesonic">Penesonic Solar Panel</string>
+    <string name="buy_sopan">Buy Your SoPan!</string>
+    <string name="shopee">Purchase at Shopee</string>
+    <string name="tokped">Purchase at Tokopedia</string>
+
+    <!-- FavoriteActivity -->
+    <string name="favorite">Favorites</string>
+    <string name="location">Tangerang, Banten</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="view_detail">View Detail</string>
+    <string name="profile">Profile</string>
+
+    <string-array name="sopan_names">
+        <item>Penesonic Solar Panel</item>
+        <item>SolarHaart Solar Panel</item>
+        <item>Santech Solar Panel</item>
+        <item>Renesola Solar Panel</item>
+        <item>Semsohng Solar Panel</item>
+    </string-array>
+
+    <string-array name="sopan_locations">
+        <item>Tangerang, Banten</item>
+        <item>Jakarta, DKI Jakarta</item>
+        <item>Bandung, Jawa Barat</item>
+        <item>Lombok, Nusa Tenggara Barat</item>
+        <item>Medan, Sumatra Utara</item>
+    </string-array>
+
+    <integer-array name="sopan_photos">
+        <item>@drawable/panelplaceholder</item>
+        <item>@drawable/panelplaceholder</item>
+        <item>@drawable/panelplaceholder</item>
+        <item>@drawable/panelplaceholder</item>
+        <item>@drawable/panelplaceholder</item>
+    </integer-array>
 </resources>
