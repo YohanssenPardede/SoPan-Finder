@@ -4,27 +4,27 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
 
-	@field:SerializedName("elevation")
-	val elevation: Float,
-
-	@field:SerializedName("hourly_units")
-	val hourlyUnits: HourlyUnits,
-
-	@field:SerializedName("generationtime_ms")
-	val generationtimeMs: Float,
-
-	@field:SerializedName("timezone_abbreviation")
-	val timezoneAbbreviation: String,
-
-	@field:SerializedName("timezone")
-	val timezone: String,
+//	@field:SerializedName("elevation")
+//	val elevation: Double,
+//
+//	@field:SerializedName("hourly_units")
+//	val hourlyUnits: HourlyUnits,
+//
+//	@field:SerializedName("generationtime_ms")
+//	val generationtimeMs: Float,
+//
+//	@field:SerializedName("timezone_abbreviation")
+//	val timezoneAbbreviation: String,
+//
+//	@field:SerializedName("timezone")
+//	val timezone: String,
 
 	@field:SerializedName("latitude")
 	val latitude: Float,
 
-	@field:SerializedName("utc_offset_seconds")
-	val utcOffsetSeconds: Int,
-
+//	@field:SerializedName("utc_offset_seconds")
+//	val utcOffsetSeconds: Int,
+//
 	@field:SerializedName("hourly")
 	val hourly: Hourly,
 
@@ -52,12 +52,20 @@ data class Hourly(
 	@field:SerializedName("temperature_2m")
 	val temperature2m: List<Float>,
 
-	@field:SerializedName("relativehumidity_2m")
-	val relativehumidity2m: List<Int>,
+	@field:SerializedName("cloudcover")
+	val cloudcover: List<Int>
 
-	@field:SerializedName("windspeed_10m")
-	val windspeed10m: List<Float>,
+//	@field:SerializedName("windspeed_10m")
+//	val windspeed10m : List<Float>
 
-	@field:SerializedName("time")
-	val time: List<String>
+
+//	@field:SerializedName("precipitation_probability")
+//	val precipitationProbability: List<Double>
+
+
+//	@field:SerializedName("windspeed_10m")
+//	val windspeed10m: List<Float>,
+//
+//	@field:SerializedName("time")
+//	val time: List<String>
 )

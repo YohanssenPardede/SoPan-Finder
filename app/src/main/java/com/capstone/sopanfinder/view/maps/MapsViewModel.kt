@@ -19,13 +19,17 @@ import retrofit2.Response
 class MapsViewModel : ViewModel() {
 
     fun getWeatherData(latitude: Float, longitude: Float){
-        val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,relativehumidity_2m,windspeed_10", 1)
+        val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,cloudcover", 1)
         client.enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                 val responseBody = response.body()
                 if (responseBody != null) {
                     Log.e(ContentValues.TAG, "onSuccess: ${response.message()}")
-                    Log.d("TAG", responseBody.hourly.toString())
+                    Log.d("TAG", responseBody.latitude.toString())
+                    Log.d("TAG", responseBody.longitude.toString())
+                    Log.d("TAG", responseBody.hourly.cloudcover.toString())
+//                    Log.d("TAG", responseBody.hourly.windspeed10m.toString())
+
                 }else{
                     Log.e(MapsViewModel.TAG, "Maps onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
                     Log.e(ContentValues.TAG, "onFailure: ${response.message()}")

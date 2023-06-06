@@ -65,19 +65,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(location).title("You Are Here!"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
 
+
+        Toast.makeText(applicationContext, "Latitude : $lat Longitude: $lon", Toast.LENGTH_SHORT).show()
+
+
         val latitude = lat.toFloat()
         val longitude = lon.toFloat()
-        Toast.makeText(applicationContext, "Latitude : $latitude Longitude: $longitude", Toast.LENGTH_SHORT).show()
-
 
         //Get Weather Data From API
         binding.confirmButton.setOnClickListener{
 
-           mapsViewModel.getWeatherData(latitude, longitude)
+            mapsViewModel.getWeatherData(latitude, longitude)
 //            }
 
-            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
-            finish()
+//            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
+//            finish()
         }
 
         binding.noButton.setOnClickListener{

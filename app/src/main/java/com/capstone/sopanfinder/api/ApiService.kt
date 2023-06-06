@@ -44,7 +44,7 @@ interface ApiService {
         @Query("latitude") latitude : Float,
         @Query("longitude") longitude : Float,
         @Query("hourly") hourly : String,
-        @Query("forecast_days") days : Int
+        @Query("forecast_days") forecast_days : Int
     ): Call<WeatherResponse>
 
 
