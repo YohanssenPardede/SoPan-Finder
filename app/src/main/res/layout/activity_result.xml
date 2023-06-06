@@ -40,8 +40,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="25dp"
-                android:src="@drawable/ic_favorite_border_24"
-                android:contentDescription="@string/favorite" />
+                android:contentDescription="@string/favorite"
+                android:src="@drawable/ic_favorite_border_24" />
 
         </RelativeLayout>
 
@@ -142,8 +142,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
-                android:text="@string/shopee"
-                android:textSize="12sp" />
+                android:fontFamily="@font/alegreya_sans_sc_bold"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="20sp"
+                android:text="@string/shopee" />
 
         </LinearLayout>
 
@@ -167,7 +170,10 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
                 android:text="@string/tokped"
-                android:textSize="12sp" />
+                android:fontFamily="@font/alegreya_sans_sc_bold"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

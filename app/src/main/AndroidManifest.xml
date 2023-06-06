@@ -20,10 +20,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD9peeqLbchMQgH3jTJBhEgat9nqeB9m-E" />
+            android:value="AIzaSyAqByNTmmfLqIrZXjXlMVA0C3toWrX9Mo4" />
 
         <activity
-            android:name=".view.splashscreen.SplashScreenActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +59,7 @@
             android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.splashscreen.SplashScreenActivity"
             android:exported="false" />
 
         <meta-data

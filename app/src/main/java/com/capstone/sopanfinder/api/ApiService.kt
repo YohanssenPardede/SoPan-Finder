@@ -39,9 +39,13 @@ interface ApiService {
         @Part("description") description: RequestBody
     ): Call<UploadStory>
 
-    @GET("forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,relativehumidity_2m,windspeed_10m&forecast_days=1")
+    @GET("forecast")
     fun fetchWeather(
-        @Path("latitude") latitude : Float,
-        @Path("longitude") longitude : Float
+        @Query("latitude") latitude : Float,
+        @Query("longitude") longitude : Float,
+        @Query("hourly") hourly : String,
+        @Query("forecast_days") days : Int
     ): Call<WeatherResponse>
+
+
 }

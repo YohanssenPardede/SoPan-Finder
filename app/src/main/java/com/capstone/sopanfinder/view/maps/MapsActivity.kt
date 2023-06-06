@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.api.ApiConfig
 import com.capstone.sopanfinder.api.Login
@@ -55,23 +56,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(location).title("You Are Here!"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
 
+        val latitude = lat.toFloat()
+        val longitude = lon.toFloat()
+        Toast.makeText(applicationContext, "Latitude : $latitude Longitude: $longitude", Toast.LENGTH_SHORT).show()
+
 
         //Get Weather Data From API
         binding.confirmButton.setOnClickListener{
 
-
-//            fun getWeatherData(lat: Float, lon: Float) {
-//                _isLoading.value = true
-            val client = ApiConfig.getWeatherApi().fetchWeather(lat.toFloat(), lon.toFloat())
+            val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,relativehumidity_2m,windspeed_10", 1)
             client.enqueue(object : Callback<WeatherResponse> {
                 override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                     val responseBody = response.body()
-
-//                        _isLoading.value = false
-
                     if (responseBody != null) {
                         Log.e(ContentValues.TAG, "onSuccess: ${response.message()}")
-                        Log.i("login token", responseBody.hourly.toString())
+                        Log.d("TAG", responseBody.hourly.toString())
                     }else{
                         Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
                     }
