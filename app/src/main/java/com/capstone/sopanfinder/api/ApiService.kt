@@ -38,4 +38,10 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody
     ): Call<UploadStory>
+
+    @GET("forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,relativehumidity_2m,windspeed_10m&forecast_days=1")
+    fun fetchWeather(
+        @Path("latitude") latitude : Float,
+        @Path("longitude") longitude : Float
+    ): Call<WeatherResponse>
 }

@@ -1,12 +1,19 @@
 package com.capstone.sopanfinder.view.maps
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.capstone.sopanfinder.R
+import com.capstone.sopanfinder.api.ApiConfig
+import com.capstone.sopanfinder.api.Login
+import com.capstone.sopanfinder.api.WeatherResponse
 import com.capstone.sopanfinder.databinding.ActivityMapsBinding
+import com.capstone.sopanfinder.preference.UserPreference
 import com.capstone.sopanfinder.view.graph.GraphActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
+import com.capstone.sopanfinder.view.login.LoginViewModel
 import com.capstone.sopanfinder.view.result.ResultActivity
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -15,6 +22,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.math.log
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -44,7 +55,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(location).title("You Are Here!"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
 
+
+        //Get Weather Data From API
         binding.confirmButton.setOnClickListener{
+
+
+//            fun getWeatherData(lat: Float, lon: Float) {
+//                _isLoading.value = true
+            val client = ApiConfig.getWeatherApi().fetchWeather(lat.toFloat(), lon.toFloat())
+            client.enqueue(object : Callback<WeatherResponse> {
+                override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
+                    val responseBody = response.body()
+
+//                        _isLoading.value = false
+
+                    if (responseBody != null) {
+                        Log.e(ContentValues.TAG, "onSuccess: ${response.message()}")
+                        Log.i("login token", responseBody.hourly.toString())
+                    }else{
+                        Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
+                    }
+                }
+                override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
+                    Log.e(ContentValues.TAG, "onFailure2: ${t.message}")
+                }
+            })
+//            }
+
             startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
             finish()
         }
