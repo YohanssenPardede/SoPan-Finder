@@ -6,16 +6,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.api.ApiConfig
 import com.capstone.sopanfinder.api.Login
 import com.capstone.sopanfinder.api.WeatherResponse
 import com.capstone.sopanfinder.databinding.ActivityMapsBinding
 import com.capstone.sopanfinder.preference.UserPreference
+import com.capstone.sopanfinder.view.ViewModelFactory
 import com.capstone.sopanfinder.view.graph.GraphActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.login.LoginViewModel
 import com.capstone.sopanfinder.view.result.ResultActivity
+import com.capstone.sopanfinder.view.signup.SignupViewModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -32,6 +36,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private val mapsViewModel by viewModels<MapsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +44,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
+
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
@@ -64,21 +73,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //Get Weather Data From API
         binding.confirmButton.setOnClickListener{
 
-            val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,relativehumidity_2m,windspeed_10", 1)
-            client.enqueue(object : Callback<WeatherResponse> {
-                override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        Log.e(ContentValues.TAG, "onSuccess: ${response.message()}")
-                        Log.d("TAG", responseBody.hourly.toString())
-                    }else{
-                        Log.e(ContentValues.TAG, "onFailure: ${response.message()}")
-                    }
-                }
-                override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
-                    Log.e(ContentValues.TAG, "onFailure2: ${t.message}")
-                }
-            })
+           mapsViewModel.getWeatherData(latitude, longitude)
 //            }
 
             startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
