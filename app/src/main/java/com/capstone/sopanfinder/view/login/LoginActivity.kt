@@ -3,16 +3,12 @@ package com.capstone.sopanfinder.view.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import com.capstone.sopanfinder.MainActivity
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityLoginBinding
 import com.capstone.sopanfinder.view.ViewModelFactory
