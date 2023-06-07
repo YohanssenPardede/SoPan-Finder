@@ -1,7 +1,7 @@
 package com.capstone.sopanfinder.preference
 
 import android.content.Context
-import com.capstone.sopanfinder.api.User
+import com.capstone.sopanfinder.api.Login
 
 class UserPreference private constructor(mContext: Context) {
     private val sharedPreference = mContext.getSharedPreferences(PREF, Context.MODE_PRIVATE)
@@ -11,22 +11,24 @@ class UserPreference private constructor(mContext: Context) {
         return sharedPreference.getString("token", null) != null
     }
 
-    val user: User
+    val user: Login
     get() {
-        return User(
-            sharedPreference.getString("userId", null).toString(),
+        return Login(
             sharedPreference.getString("name", null).toString(),
-            sharedPreference.getString("token", null).toString()
+            sharedPreference.getInt("id", 0),
+            sharedPreference.getString("token", null).toString(),
+            sharedPreference.getString("email", null).toString()
         )
     }
 
-    fun saveUser(user: User) {
+    fun saveUser(user: Login) {
         val editor = sharedPreference.edit()
 
         editor.apply {
-            putString("userId", user.userId)
+            putInt("id", user.id)
             putString("name", user.name)
-            putString("token", user.token)
+            putString("email", user.email)
+            putString("token", user.accessToken)
         }
         editor.apply()
     }
@@ -42,6 +44,7 @@ class UserPreference private constructor(mContext: Context) {
     companion object {
         private const val PREF = "user_preference"
         private var mInstance: UserPreference? = null
+
         @Synchronized
         fun getInstance(mContext: Context): UserPreference {
             if (mInstance == null) {

@@ -1,13 +1,12 @@
 package com.capstone.sopanfinder.view.signup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivitySignupBinding
@@ -63,6 +62,7 @@ class SignupActivity : AppCompatActivity() {
             val name = binding.edRegisterName.text.toString()
             val email = binding.edRegisterEmail.text.toString()
             val password = binding.edRegisterPassword.text.toString()
+            val confirmPw = binding.edRegisterConfirm.text.toString()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 if (name.isEmpty()) {
@@ -119,21 +119,26 @@ class SignupActivity : AppCompatActivity() {
                     edRegisterEmail.requestFocus()
                 }
                 return@setOnClickListener
+            } else if (password != confirmPw) {
+                Toast.makeText(this, getString(R.string.not_matched), Toast.LENGTH_SHORT).show()
+                binding.apply {
+                    registerConfirmContainer.error = getString(R.string.not_matched)
+                    edRegisterConfirm.requestFocus()
+                }
+                return@setOnClickListener
             } else {
-                binding.registerNameContainer.error = null
                 binding.registerEmailContainer.error = null
+                binding.registerNameContainer.error = null
                 binding.registerPasswordContainer.error = null
+                binding.registerConfirmContainer.error = null
 
-                signupViewModel.register(name, email, password)
-                signupViewModel.result.observe(this) { result ->
-                    if (!result.error) {
-                        Toast.makeText(this@SignupActivity, resources.getString(R.string.success_signup), Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@SignupActivity, LoginActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                    } else
-                        Toast.makeText(this@SignupActivity, result.message, Toast.LENGTH_SHORT).show()
+                signupViewModel.register(email, name, password, confirmPw)
+                signupViewModel.result.observe(this) {
+                    Toast.makeText(this@SignupActivity, resources.getString(R.string.success_signup), Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@SignupActivity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
                 }
                 signupViewModel.isLoading.observe(this) {
                     showLoading(it)

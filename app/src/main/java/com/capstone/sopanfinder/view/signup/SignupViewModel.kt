@@ -21,9 +21,9 @@ class SignupViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun register(name: String, email: String, password: String) {
+    fun register(email: String, name: String, password: String, confirmPassword: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().postRegister(name, email, password)
+        val client = ApiConfig.getApiService().postRegister(email, name, password, confirmPassword)
         client.enqueue(object : Callback<Register> {
             @SuppressLint("LongLogTag")
             override fun onResponse(call: Call<Register>, response: Response<Register>) {
@@ -31,7 +31,7 @@ class SignupViewModel : ViewModel() {
 
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    Log.i("signup name, email, password", "$name || $email || $password")
+                    Log.i("signup name, email, pw, confirmpw", "$name || $email || $password || $confirmPassword")
                     _result.value = responseBody!!
                 } else {
                     _error.value = true

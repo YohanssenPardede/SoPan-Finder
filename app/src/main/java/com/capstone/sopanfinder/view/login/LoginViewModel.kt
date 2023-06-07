@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.capstone.sopanfinder.api.ApiConfig
 import com.capstone.sopanfinder.api.Login
-import com.capstone.sopanfinder.api.User
 import com.capstone.sopanfinder.preference.UserPreference
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,8 +17,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     @SuppressLint("StaticFieldLeak")
     private val context = getApplication<Application>().applicationContext
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _user = MutableLiveData<Login>()
+    val user: LiveData<Login> = _user
 
     private val _error = MutableLiveData<Boolean>()
     val error: LiveData<Boolean> = _error
@@ -35,12 +34,12 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 val responseBody = response.body()
 
                 _isLoading.value = false
-                if (response.isSuccessful && !responseBody!!.error) {
-                    Log.i("login token", responseBody.user.token)
-                    Log.i("login name", responseBody.user.name)
+                if (response.isSuccessful) {
+                    Log.i("login token", responseBody!!.accessToken)
+                    Log.i("login name", responseBody.name)
 
-                    _user.value = responseBody.user
-                    UserPreference.getInstance(context).saveUser(responseBody.user)
+                    _user.value = response.body()
+                    UserPreference.getInstance(context).saveUser(responseBody)
                 } else {
                     _error.value = true
                     Log.e(TAG, "login onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")

@@ -3,8 +3,6 @@ package com.capstone.sopanfinder.view.home
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -13,14 +11,13 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.capstone.sopanfinder.R
-import com.capstone.sopanfinder.view.result.ResultActivity
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
 import com.capstone.sopanfinder.preference.UserPreference
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.login.LoginActivity
 import com.capstone.sopanfinder.view.maps.MapsActivity
+import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.util.*
@@ -40,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-//        loginCheck()
+        loginCheck()
 
         binding.searchBtn.setOnClickListener{
             getLocation()

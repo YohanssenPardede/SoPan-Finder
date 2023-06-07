@@ -23,7 +23,7 @@
             android:value="AIzaSyAqByNTmmfLqIrZXjXlMVA0C3toWrX9Mo4" />
 
         <activity
-            android:name=".view.home.HomeActivity"
+            android:name=".view.splashscreen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,12 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.maps.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
-
         <activity
             android:name=".view.graph.GraphActivity"
             android:exported="false" />
@@ -55,11 +53,8 @@
         <activity
             android:name=".view.result.ResultActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".view.home.HomeActivity"-->
-<!--            android:exported="false" />-->
         <activity
-            android:name=".view.splashscreen.SplashScreenActivity"
+            android:name=".view.home.HomeActivity"
             android:exported="false" />
 
         <meta-data

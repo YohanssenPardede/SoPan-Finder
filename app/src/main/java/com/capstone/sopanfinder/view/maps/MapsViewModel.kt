@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.capstone.sopanfinder.api.ApiConfig
-import com.capstone.sopanfinder.api.User
 import com.capstone.sopanfinder.api.WeatherResponse
 import com.capstone.sopanfinder.view.signup.SignupViewModel
 import retrofit2.Call

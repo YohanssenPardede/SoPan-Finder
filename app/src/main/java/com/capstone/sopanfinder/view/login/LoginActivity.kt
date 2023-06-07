@@ -116,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
 
                 loginViewModel.login(email, password)
                 loginViewModel.user.observe(this) { user ->
-                    Log.d(TAG, "${user.token} || ${user.userId} || ${user.name}")
+                    Log.d(TAG, "${user.accessToken} || ${user.id} || ${user.name} || ${user.email}")
 
                     Toast.makeText(this@LoginActivity, getString(R.string.success_login, user.name), Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
