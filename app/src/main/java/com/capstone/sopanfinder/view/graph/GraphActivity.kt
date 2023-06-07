@@ -3,9 +3,14 @@ package com.capstone.sopanfinder.view.graph
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityGraphBinding
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
+import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
+import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.capstone.sopanfinder.view.result.ResultActivity
 
 class GraphActivity : AppCompatActivity() {
@@ -26,5 +31,18 @@ class GraphActivity : AppCompatActivity() {
             startActivity(Intent(this@GraphActivity, HomeActivity::class.java))
             finishAffinity()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favorite_menu -> startActivity(Intent(this@GraphActivity, FavoriteActivity::class.java))
+            R.id.profile_menu -> startActivity(Intent(this@GraphActivity, ProfileActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

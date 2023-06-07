@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -15,9 +17,11 @@ import com.capstone.sopanfinder.api.WeatherResponse
 import com.capstone.sopanfinder.databinding.ActivityMapsBinding
 import com.capstone.sopanfinder.preference.UserPreference
 import com.capstone.sopanfinder.view.ViewModelFactory
+import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.graph.GraphActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.login.LoginViewModel
+import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.capstone.sopanfinder.view.result.ResultActivity
 import com.capstone.sopanfinder.view.signup.SignupViewModel
 
@@ -84,5 +88,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(Intent(this@MapsActivity, HomeActivity::class.java))
             finish()
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.favorite_menu -> startActivity(Intent(this@MapsActivity, FavoriteActivity::class.java))
+            R.id.profile_menu -> startActivity(Intent(this@MapsActivity, ProfileActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
