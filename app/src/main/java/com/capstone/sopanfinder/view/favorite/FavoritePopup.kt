@@ -37,8 +37,9 @@ class FavoritePopup : AppCompatActivity() {
 
         // ...
 
-//        val bundle = intent.extras
-//        popupText = bundle?.getString("popuptext", "Text") ?: ""
+        val bundle = intent.extras
+        popupText = bundle?.getString("popuptext", "Text") ?: ""
+        binding.popupWindowText.setText(popupText)
 //        popupButton = bundle?.getString("popupbtn", "Button") ?: ""
 //        darkStatusBar = bundle?.getBoolean("darkstatusbar", false) ?: false
 

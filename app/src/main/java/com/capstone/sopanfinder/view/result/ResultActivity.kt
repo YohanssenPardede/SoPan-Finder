@@ -19,6 +19,7 @@ import com.capstone.sopanfinder.view.profile.ProfileActivity
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResultBinding
+    private var flag : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +37,22 @@ class ResultActivity : AppCompatActivity() {
 //            supportActionBar!!.hide()
 //        }
 
+
+
         binding.favoriteBtn.setOnClickListener {
-            binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
-            val intent = Intent(this, FavoritePopup::class.java)
-//            intent.putExtra("popuptext", "Sorry, that email address is already used!")
-//            intent.putExtra("popupbtn", "OK")
-//            intent.putExtra("darkstatusbar", false)
-            startActivity(intent)
+            if(flag == 0) {
+                binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
+                val intent = Intent(this, FavoritePopup::class.java)
+                intent.putExtra("popuptext", "Favorite successfully saved")
+                flag = 1
+                startActivity(intent)
+            }else if (flag == 1){
+                binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_border_24)
+                val intent = Intent(this, FavoritePopup::class.java)
+                intent.putExtra("popuptext", "Favorite has been removed")
+                flag = 0
+                startActivity(intent)
+            }
         }
 
     }
