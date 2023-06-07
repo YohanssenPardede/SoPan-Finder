@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
+import com.capstone.sopanfinder.view.favorite.FavoritePopup
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.profile.ProfileActivity
 
@@ -37,6 +38,11 @@ class ResultActivity : AppCompatActivity() {
 
         binding.favoriteBtn.setOnClickListener {
             binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
+            val intent = Intent(this, FavoritePopup::class.java)
+//            intent.putExtra("popuptext", "Sorry, that email address is already used!")
+//            intent.putExtra("popupbtn", "OK")
+//            intent.putExtra("darkstatusbar", false)
+            startActivity(intent)
         }
 
     }
