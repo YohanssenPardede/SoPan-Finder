@@ -14,6 +14,7 @@ class UserPreference private constructor(mContext: Context) {
     val user: Login
     get() {
         return Login(
+            sharedPreference.getString("msg", null).toString(),
             sharedPreference.getString("name", null).toString(),
             sharedPreference.getInt("id", 0),
             sharedPreference.getString("token", null).toString(),

@@ -3,6 +3,7 @@ package com.capstone.sopanfinder.view.login
 import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,12 +38,14 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 if (response.isSuccessful) {
                     Log.i("login token", responseBody!!.accessToken)
                     Log.i("login name", responseBody.name)
+                    Log.i("login message", responseBody.msg)
 
                     _user.value = response.body()
                     UserPreference.getInstance(context).saveUser(responseBody)
                 } else {
                     _error.value = true
-                    Log.e(TAG, "login onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
+//                    Log.e(TAG, "login onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
+                    Toast.makeText(context, "Email or Password is incorrect", Toast.LENGTH_SHORT).show()
                 }
             }
 

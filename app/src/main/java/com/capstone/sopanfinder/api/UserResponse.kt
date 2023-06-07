@@ -9,6 +9,8 @@ data class Register(
 )
 
 data class Login(
+    @field:SerializedName("msg")
+    val msg: String,
 
     @field:SerializedName("name")
     val name: String,
