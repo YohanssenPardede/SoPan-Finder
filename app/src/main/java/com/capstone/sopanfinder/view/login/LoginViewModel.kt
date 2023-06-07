@@ -38,7 +38,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 if (response.isSuccessful) {
                     Log.i("login token", responseBody!!.accessToken)
                     Log.i("login name", responseBody.name)
-                    Log.i("login message", responseBody.msg)
 
                     _user.value = response.body()
                     UserPreference.getInstance(context).saveUser(responseBody)

@@ -72,14 +72,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val latitude = lat.toFloat()
         val longitude = lon.toFloat()
 
-        //Get Weather Data From API
+        //Get Weather Data From API, send to logcat and display graph data
         binding.confirmButton.setOnClickListener{
 
             mapsViewModel.getWeatherData(latitude, longitude)
-//            }
-
-//            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
-//            finish()
+            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
+            finish()
         }
 
         binding.noButton.setOnClickListener{
