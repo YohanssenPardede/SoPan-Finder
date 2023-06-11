@@ -7,10 +7,12 @@
     android:background="@color/dirty_white"
     tools:context=".view.login.LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="280dp"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
@@ -31,7 +33,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_signup">
 
@@ -39,7 +41,7 @@
                 android:id="@+id/ed_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/inter"
                 android:hint="@string/email"
                 android:padding="15dp"
@@ -72,29 +74,28 @@
             android:id="@+id/tv_to_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/inter"
             android:text="@string/redirect_signup"
             android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_password_container" />
 
         <Button
             android:id="@+id/btn_signup"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/alegreya_sans_sc_bold"
             android:text="@string/submit"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_to_signup" />
+            android:textSize="20sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -104,5 +105,15 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         tools:visibility="visible" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/solarpanel"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/login" />
 
 </RelativeLayout>

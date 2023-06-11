@@ -29,7 +29,7 @@ class ResultActivity : AppCompatActivity() {
 
         supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.ab_gradient))
         supportActionBar?.setElevation(0F)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(Html.fromHtml("<font color=\"transparent\">" + "" + "</font>"));
 
 

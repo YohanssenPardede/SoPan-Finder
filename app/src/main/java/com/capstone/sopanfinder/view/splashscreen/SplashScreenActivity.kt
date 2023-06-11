@@ -16,7 +16,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val splashScreen: LinearLayout = findViewById(R.id.splash_layout)
         splashScreen.alpha = 0f
-        splashScreen.animate().setDuration(1500).alpha(1f).withEndAction {
+        splashScreen.animate().setDuration(2000).alpha(1f).withEndAction {
             val openMainPage = Intent(this, HomeActivity::class.java)
             startActivity(openMainPage)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)

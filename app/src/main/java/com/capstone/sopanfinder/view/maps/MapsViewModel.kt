@@ -24,13 +24,13 @@ class MapsViewModel : ViewModel() {
                 val responseBody = response.body()
                 if (responseBody != null) {
                     Log.e(ContentValues.TAG, "onSuccess: ${response.message()}")
-                    Log.d("TAG", responseBody.latitude.toString())
-                    Log.d("TAG", responseBody.longitude.toString())
-                    Log.d("TAG", responseBody.hourly.cloudcover.toString())
-                    Log.d("TAG", responseBody.hourly.windspeed10m.toString())
-                    Log.d("TAG", responseBody.hourly.rain.toString())
-                    Log.d("TAG", responseBody.hourly.precipitationProbability.toString())
-                    Log.d("TAG", responseBody.hourly.time.toString())
+                    Log.d("latitude : ", responseBody.latitude.toString())
+                    Log.d("longitude : ", responseBody.longitude.toString())
+                    Log.d("cloudcover : ", responseBody.hourly.cloudcover.toString())
+                    Log.d("windspeed_10m : ", responseBody.hourly.windspeed10m.toString())
+                    Log.d("rain : ", responseBody.hourly.rain.toString())
+                    Log.d("precipitation_probability : ", responseBody.hourly.precipitationProbability.toString())
+                    Log.d("time ", responseBody.hourly.time.toString())
 
                 }else{
                     Log.e(MapsViewModel.TAG, "Maps onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")

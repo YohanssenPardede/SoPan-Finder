@@ -3,6 +3,8 @@ package com.capstone.sopanfinder.view.graph
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import com.capstone.sopanfinder.R
@@ -12,6 +14,8 @@ import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.profile.ProfileActivity
 import com.capstone.sopanfinder.view.result.ResultActivity
+import java.util.*
+import kotlin.concurrent.schedule
 
 class GraphActivity : AppCompatActivity() {
 
@@ -21,6 +25,10 @@ class GraphActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGraphBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.graphAnim.pauseAnimation()
+        }, 5000)
 
         binding.viewSopan.setOnClickListener{
             startActivity(Intent(this@GraphActivity, ResultActivity::class.java))

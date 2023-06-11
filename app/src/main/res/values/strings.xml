@@ -34,6 +34,7 @@
     <string name="not_matched">Password not matched</string>
 
     <!-- ProfileActivity -->
+    <string name="emailprofile">placeholder@email.com</string>
     <string name="logout">Logout</string>
     <string name="success_logout">Logout successful</string>
 

@@ -9,7 +9,9 @@ import android.view.MenuItem
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
@@ -35,28 +37,24 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-        loginCheck()
+//        loginCheck()
 
         binding.searchBtn.setOnClickListener{
             getLocation()
 
-            val animation: Animation =
-                AnimationUtils.loadAnimation(applicationContext, R.anim.blink)
-                binding.searchBtn.startAnimation(animation)
-                binding.homeStatus.setText(R.string.findsopan2)
-                binding.homeDesc.setText(R.string.wait)
+            binding.searchBtn.playAnimation()
+            binding.circle.playAnimation()
+            binding.homeStatus.setText(R.string.findsopan2)
+            binding.homeDesc.setText(R.string.wait)
 
             Timer().schedule(2000) {
-                binding.searchBtn.clearAnimation()
-
                 val intent = Intent(this@HomeActivity, MapsActivity::class.java)
                 intent.putExtra("Latitude", lat)
                 intent.putExtra("Longitude", lon)
                 startActivity(intent)
-
-//                startActivity(Intent(this@HomeActivity, ResultActivity::class.java))
             }
         }
     }
@@ -73,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
         }
         task.addOnSuccessListener {
             if(it!= null){
-                Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
                 Log.d("TAG", "${it.latitude} ${it.longitude}")
 
                 lat = it.latitude
@@ -97,6 +95,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume(){
         super.onResume()
+        binding.searchBtn.pauseAnimation()
+        binding.circle.pauseAnimation()
         binding.homeStatus.setText(R.string.findsopan)
         binding.homeDesc.setText(R.string.home_desc_1)
     }

@@ -3,10 +3,14 @@ package com.capstone.sopanfinder.view.profile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityProfileBinding
 import com.capstone.sopanfinder.preference.UserPreference
+import com.capstone.sopanfinder.view.favorite.FavoriteActivity
+import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.login.LoginActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -17,7 +21,10 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tempName.text = UserPreference.getInstance(this).user.name
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.profileName.text = UserPreference.getInstance(this).user.name
+        binding.profileEmail.text = UserPreference.getInstance(this).user.email
 
         binding.btnLogout.setOnClickListener {
             UserPreference.getInstance(this).clearSession()
@@ -26,5 +33,23 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finishAffinity()
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.profile, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(Intent(this@ProfileActivity, HomeActivity::class.java))
+                finish()
+            }
+            R.id.favorite_menu -> {
+                startActivity(Intent(this@ProfileActivity, FavoriteActivity::class.java))
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
