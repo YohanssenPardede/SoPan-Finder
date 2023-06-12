@@ -1,9 +1,11 @@
 package com.capstone.sopanfinder.view.maps
 
+import android.annotation.SuppressLint
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.capstone.sopanfinder.api.ApiConfig
 import com.capstone.sopanfinder.api.SopanResponse
 import com.capstone.sopanfinder.api.WeatherResponse
@@ -11,7 +13,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MapsViewModel : ViewModel() {
+class MapsViewModel(application: Application) : AndroidViewModel(application)  {
+    @SuppressLint("StaticFieldLeak")
+    private val context = getApplication<Application>().applicationContext
+
     private val _sopandata = MutableLiveData<SopanResponse>()
     val sopandata: LiveData<SopanResponse> = _sopandata
 
@@ -25,8 +30,9 @@ class MapsViewModel : ViewModel() {
 //                val responseBody = response.body()
 
                 if (response.isSuccessful) {
-                    Log.i(TAG, "getWeatherData result: ${response.body()}")
+//                    Log.i(TAG, "getWeatherData result: ${response.body()}")
                     _weatherData.value = response.body()
+
 
 //                    val lat = responseBody.latitude
 //                    val lon = responseBody.longitude
@@ -75,7 +81,7 @@ class MapsViewModel : ViewModel() {
         })
     }
 
-    fun fetchSopan(date: List<String>, pv_demand: List<Int>, temp: List<Double>, wind_speed: List<Double>, rain_1h: List<Double>, snow_1h: List<Double>, clouds_all: List<Int>, percip_1h: List<Double>) {
+    fun fetchSopan(date: List<String>, pv_demand: List<Float>, temp: List<Float>, wind_speed: List<Float>, rain_1h: List<Float>, snow_1h: List<Float>, clouds_all: List<Float>, percip_1h: List<Float>) {
         val client = ApiConfig.getSopanApi().fetchResult(date, pv_demand, temp, wind_speed, rain_1h, snow_1h, clouds_all, percip_1h)
         client.enqueue(object : Callback<SopanResponse> {
             override fun onResponse(call: Call<SopanResponse>, response: Response<SopanResponse>) {

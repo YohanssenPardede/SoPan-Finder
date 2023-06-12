@@ -15,6 +15,7 @@ import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.favorite.FavoritePopup
+import com.capstone.sopanfinder.view.maps.MapsActivity
 import com.capstone.sopanfinder.view.maps.MapsViewModel
 import com.capstone.sopanfinder.view.profile.ProfileActivity
 
@@ -34,8 +35,18 @@ class ResultActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(Html.fromHtml("<font color=\"transparent\">" + "" + "</font>"));
 
-        setResult()
+
         setFavoriteFlag()
+        val time = intent.getStringExtra("time")
+        val temp = intent.getStringExtra("temp")
+        val pv = intent.getStringExtra("pv")
+        val clouds = intent.getStringExtra("clouds")
+        val wind = intent.getStringExtra("wind")
+        val rain = intent.getStringExtra("rain")
+        val snow = intent.getStringExtra("snow")
+        val precip = intent.getStringExtra("precip")
+        Log.d("RESULT ACT", "\nTime: $time \n Temp : $temp \n Pv Demand: $pv \n Clouds: $clouds \n Wind: $wind \n Rain: $rain \n Snow: $snow \n Precip: $precip")
+
 
 //        val name = intent.getStringExtra(FavoriteActivity.EXTRA_NAME)
 //        val location = intent.getStringExtra(FavoriteActivity.EXTRA_LOCATION)
@@ -43,59 +54,37 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun setResult(){
-//        var temp: List<Double>
-//        var clouds_all: List<Int>
-        val pv_demand : List<Int> = listOf(62, 69, 73, 65, 60, 59, 92, 80, 75, 91, 100, 100, 98, 29, 100, 30, 38, 40, 17, 37, 44, 43, 45, 59)
-//        var wind_speed: List<Double>
-//        var rain_1h: List<Double>
-//        var snow_1h: List<Double>
-//        var precip_1h: List<Double>
-        val date : List<String> = listOf("2023-06-11", "2023-06-11", "2023-06-11")
-
-        mapsViewModel.weatherData.observe(this) {
-            val temp = it.hourly.temperature2m
-            val clouds_all = it.hourly.cloudcover
-            val wind_speed = it.hourly.windspeed10m
-            val rain_1h = it.hourly.rain
-            val snow_1h = it.hourly.snowfall
-            val precip_1h = it.hourly.precipitationProbability
-
-            Log.i(TAG, "setResult temp $temp ||" +
-                    " clouds_all $clouds_all ||" +
-                    " pv_demand $pv_demand ||" +
-                    " wind_speed $wind_speed ||" +
-                    " rain $rain_1h ||" +
-                    " snow $snow_1h ||" +
-                    " precip $precip_1h ||" +
-                    " date $date")
-        }
 
 
-        mapsViewModel.sopandata.observe(this) { sopandata ->
-            val name = sopandata.nameSopan
-            val cell = sopandata.panelSpecification.solarCellType
-            val power = sopandata.panelSpecification.powerOutput
-            val efficiency = sopandata.panelSpecification.efficiency
-            val dimensions = sopandata.panelSpecification.dimensions
-            val weight = sopandata.panelSpecification.weight
-            val imagelink = sopandata.linkImg
-            val link = sopandata.link
 
-            binding.tvSopanName.setText(name)
-            binding.tvCellType.setText(cell)
-            binding.tvPowerOutput.setText(power)
-            binding.tvEfficiency.setText(efficiency)
-            binding.tvDimensions.setText(dimensions)
-            binding.tvWeight.setText(weight)
 
-            Glide.with(this).load(imagelink).into(binding.ivSopanPic);
 
-            binding.commerceBtn.setOnClickListener{
-                val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
-                val linkintent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(linkintent)
-            }
-        }
+//
+//        mapsViewModel.sopandata.observe(this) { sopandata ->
+//            val name = sopandata.nameSopan
+//            val cell = sopandata.panelSpecification.solarCellType
+//            val power = sopandata.panelSpecification.powerOutput
+//            val efficiency = sopandata.panelSpecification.efficiency
+//            val dimensions = sopandata.panelSpecification.dimensions
+//            val weight = sopandata.panelSpecification.weight
+//            val imagelink = sopandata.linkImg
+//            val link = sopandata.link
+//
+//            binding.tvSopanName.setText(name)
+//            binding.tvCellType.setText(cell)
+//            binding.tvPowerOutput.setText(power)
+//            binding.tvEfficiency.setText(efficiency)
+//            binding.tvDimensions.setText(dimensions)
+//            binding.tvWeight.setText(weight)
+//
+//            Glide.with(this).load(imagelink).into(binding.ivSopanPic);
+//
+//            binding.commerceBtn.setOnClickListener{
+//                val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
+//                val linkintent = Intent(Intent.ACTION_VIEW, uri)
+//                startActivity(linkintent)
+//            }
+//        }
     }
 
     private fun setFavoriteFlag() {
@@ -140,6 +129,10 @@ class ResultActivity : AppCompatActivity() {
         finish()
     }
 
+    override fun onResume(){
+        super.onResume()
+        setResult()
+    }
     companion object {
         const val TAG = "ResultActivity"
     }

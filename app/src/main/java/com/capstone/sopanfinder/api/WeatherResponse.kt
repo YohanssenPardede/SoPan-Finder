@@ -1,8 +1,10 @@
 package com.capstone.sopanfinder.api
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data class WeatherResponse(
+
+data class WeatherResponse (
 
 	@field:SerializedName("latitude")
 	val latitude: Float,
@@ -12,7 +14,7 @@ data class WeatherResponse(
 
 	@field:SerializedName("longitude")
 	val longitude: Float
-)
+):Serializable
 
 data class HourlyUnits(
 
@@ -35,7 +37,7 @@ data class Hourly(
 	val temperature2m: List<Double>,
 
 	@field:SerializedName("cloudcover")
-	val cloudcover: List<Int>,
+	val cloudcover: List<Float>,
 
 	@field:SerializedName("windspeed_10m")
 	val windspeed10m : List<Double>,

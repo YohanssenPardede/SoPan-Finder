@@ -5,20 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityMapsBinding
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
-import com.capstone.sopanfinder.view.graph.GraphActivity
 import com.capstone.sopanfinder.view.home.HomeActivity
 import com.capstone.sopanfinder.view.profile.ProfileActivity
+import com.capstone.sopanfinder.view.result.ResultActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -60,8 +63,48 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //Get Weather Data From API, send to logcat and display graph data
         binding.confirmButton.setOnClickListener{
             mapsViewModel.getWeatherData(latitude, longitude)
-            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
-            finish()
+
+
+            mapsViewModel.weatherData.observe(this) {
+                val time = it.hourly.time
+                val temp = it.hourly.temperature2m
+                val pv_demand = listOf(62, 69, 73, 65, 60, 59, 92, 80, 75, 91, 100, 100, 98, 29, 100, 30, 38, 40, 17, 37, 44, 43, 45, 59)
+                val clouds_all = it.hourly.cloudcover
+                val wind_speed = it.hourly.windspeed10m
+                val rain_1h = it.hourly.rain
+                val snow_1h = it.hourly.snowfall
+                val precip_1h = it.hourly.precipitationProbability
+
+                Log.d(
+                    "Maps Activity", "setResult temp $temp ||" +
+                            " clouds_all $clouds_all ||" +
+                            " wind_speed $wind_speed ||" +
+                            " rain $rain_1h ||" +
+                            " snow $snow_1h ||" +
+                            " precip $precip_1h ||"
+                )
+
+//                val intent = Intent(this, ResultActivity::class.java)
+                val intent = Intent(this@MapsActivity, ResultActivity::class.java)
+
+                intent.putExtra("time", time.toString())
+                intent.putExtra("temp", temp.toString())
+                intent.putExtra("clouds", clouds_all.toString())
+                intent.putExtra("wind", wind_speed.toString())
+                intent.putExtra("rain", rain_1h.toString())
+                intent.putExtra("snow", snow_1h.toString())
+                intent.putExtra("precip", precip_1h.toString())
+                intent.putExtra("pv", pv_demand.toString())
+
+                startActivity(intent)
+
+//                intent.putExtra("WEATHER_TEMP", temp)
+//                intent2.putExtra(EXTRA_MESSAGE1, message2)
+//                startActivity(intent)
+            }
+
+//            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
+//            finish()
         }
 
         binding.noButton.setOnClickListener{
