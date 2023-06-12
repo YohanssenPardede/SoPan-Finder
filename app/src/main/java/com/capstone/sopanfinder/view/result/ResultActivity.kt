@@ -33,24 +33,24 @@ class ResultActivity : AppCompatActivity() {
 //            supportActionBar!!.hide()
 //        }
 
-        val name = intent.getStringExtra(FavoriteActivity.EXTRA_NAME).toString()
+        val name = intent.getStringExtra(FavoriteActivity.EXTRA_NAME)
         val location = intent.getStringExtra(FavoriteActivity.EXTRA_LOCATION)
         val photo = intent.getIntExtra(FavoriteActivity.EXTRA_PHOTO, 0)
 
         setResultDetail(name)
     }
 
-    private fun setResultDetail(name: String) {
+    private fun setResultDetail(name: String?) {
         binding.apply {
-            tvSopanName.text = name
+            tvSopanName.text = name ?: "Solar Panel"
             favoriteBtn.setOnClickListener {
-                if(flag == 0) {
+                if (flag == 0) {
                     binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
                     val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
                     intent.putExtra("popuptext", "Favorite successfully saved")
                     flag = 1
                     startActivity(intent)
-                }else if (flag == 1){
+                } else if (flag == 1) {
                     binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_border_24)
                     val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
                     intent.putExtra("popuptext", "Favorite has been removed")
@@ -73,14 +73,8 @@ class ResultActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.favorite_menu -> {
-                startActivity(Intent(this@ResultActivity, FavoriteActivity::class.java))
-                finish()
-            }
-            R.id.profile_menu -> {
-                startActivity(Intent(this@ResultActivity, ProfileActivity::class.java))
-                finish()
-            }
+            R.id.favorite_menu -> startActivity(Intent(this@ResultActivity, FavoriteActivity::class.java))
+            R.id.profile_menu -> startActivity(Intent(this@ResultActivity, ProfileActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
