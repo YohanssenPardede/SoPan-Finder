@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-        loginCheck()
+//        loginCheck()
 
         binding.searchBtn.setOnClickListener{
             getLocation()

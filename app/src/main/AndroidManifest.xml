@@ -27,7 +27,7 @@
             android:value="AIzaSyAqByNTmmfLqIrZXjXlMVA0C3toWrX9Mo4" />
 
         <activity
-            android:name=".view.splashscreen.SplashScreenActivity"
+            android:name=".view.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,9 +57,9 @@
         <activity
             android:name=".view.result.ResultActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.home.HomeActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".view.home.HomeActivity"-->
+<!--            android:exported="false" />-->
 
         <meta-data
             android:name="preloaded_fonts"

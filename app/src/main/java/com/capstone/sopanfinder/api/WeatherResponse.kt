@@ -4,27 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
 
-//	@field:SerializedName("elevation")
-//	val elevation: Double,
-//
-//	@field:SerializedName("hourly_units")
-//	val hourlyUnits: HourlyUnits,
-//
-//	@field:SerializedName("generationtime_ms")
-//	val generationtimeMs: Float,
-//
-//	@field:SerializedName("timezone_abbreviation")
-//	val timezoneAbbreviation: String,
-//
-//	@field:SerializedName("timezone")
-//	val timezone: String,
-
 	@field:SerializedName("latitude")
 	val latitude: Float,
 
-//	@field:SerializedName("utc_offset_seconds")
-//	val utcOffsetSeconds: Int,
-//
 	@field:SerializedName("hourly")
 	val hourly: Hourly,
 
@@ -47,6 +29,8 @@ data class HourlyUnits(
 	val time: String
 )
 
+
+
 data class Hourly(
 
 	@field:SerializedName("temperature_2m")
@@ -62,9 +46,13 @@ data class Hourly(
 	val rain : List<Float>,
 
 	@field:SerializedName("precipitation_probability")
-	val precipitationProbability : List<Int>,
+	val precipitationProbability : List<Float>,
+
+
+	@field:SerializedName("snowfall")
+	val snowfall : List<Float>,
+
 
 	@field:SerializedName("time")
 	val time : List<String>,
-
 )
