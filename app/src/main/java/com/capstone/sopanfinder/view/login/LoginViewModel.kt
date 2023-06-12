@@ -43,7 +43,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     UserPreference.getInstance(context).saveUser(responseBody)
                 } else {
                     _error.value = true
-//                    Log.e(TAG, "login onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
+                    Log.e(TAG, "login onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
                     Toast.makeText(context, "Email or Password is incorrect", Toast.LENGTH_SHORT).show()
                 }
             }
