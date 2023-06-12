@@ -2,15 +2,18 @@ package com.capstone.sopanfinder.view.result
 
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityResultBinding
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.favorite.FavoritePopup
+import com.capstone.sopanfinder.view.maps.MapsViewModel
 import com.capstone.sopanfinder.view.profile.ProfileActivity
 
 
@@ -29,9 +32,8 @@ class ResultActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(Html.fromHtml("<font color=\"transparent\">" + "" + "</font>"));
 
-//        if (supportActionBar != null) {
-//            supportActionBar!!.hide()
-//        }
+
+        setResult()
 
         val name = intent.getStringExtra(FavoriteActivity.EXTRA_NAME)
         val location = intent.getStringExtra(FavoriteActivity.EXTRA_LOCATION)
@@ -40,9 +42,38 @@ class ResultActivity : AppCompatActivity() {
         setResultDetail(name)
     }
 
+    //Set hasil result sesuai response api nanti tinggal uncomment
+    private fun setResult(){
+//        val name = intent.getStringExtra(MapsViewModel.SOPAN_NAME)
+//        val cell = intent.getStringExtra(MapsViewModel.SOPAN_CELL)
+//        val power = intent.getStringExtra(MapsViewModel.SOPAN_POWER)
+//        val efficiency = intent.getStringExtra(MapsViewModel.SOPAN_EFFICIENCY)
+//        val dimensions = intent.getStringExtra(MapsViewModel.SOPAN_DIMENSIONS)
+//        val weight = intent.getStringExtra(MapsViewModel.SOPAN_WEIGHT)
+//        val imagelink = intent.getStringExtra(MapsViewModel.SOPAN_IMAGE)
+//
+//        val link = intent.getStringExtra(MapsViewModel.SOPAN_LINK)
+//
+//        binding.tvSopanName.setText(name)
+//        binding.tvCellType.setText(cell)
+//        binding.tvPowerOutput.setText(power)
+//        binding.tvEfficiency.setText(efficiency)
+//        binding.tvDimensions.setText(dimensions)
+//        binding.tvWeight.setText(weight)
+//
+//        Glide.with(this).load(imagelink).into(binding.ivSopanPic);
+//
+//        binding.commerceBtn.setOnClickListener{
+//            val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
+//            val linkintent = Intent(Intent.ACTION_VIEW, uri)
+//            startActivity(linkintent)
+//        }
+    }
+
     private fun setResultDetail(name: String?) {
         binding.apply {
             tvSopanName.text = name ?: "Solar Panel"
+
             favoriteBtn.setOnClickListener {
                 if (flag == 0) {
                     binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
