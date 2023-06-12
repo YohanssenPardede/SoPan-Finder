@@ -32,7 +32,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
 //        loginCheck()
