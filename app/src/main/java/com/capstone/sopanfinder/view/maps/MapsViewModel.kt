@@ -1,16 +1,25 @@
 package com.capstone.sopanfinder.view.maps
 
 import android.content.ContentValues
+import android.content.Intent
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.capstone.sopanfinder.api.ApiConfig
+import com.capstone.sopanfinder.api.Login
 import com.capstone.sopanfinder.api.SopanResponse
 import com.capstone.sopanfinder.api.WeatherResponse
+import com.capstone.sopanfinder.view.result.ResultActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MapsViewModel : ViewModel() {
+
+    private val _sopandata = MutableLiveData<SopanResponse>()
+    val sopandata: LiveData<SopanResponse> = _sopandata
 
     fun getWeatherData(latitude: Float, longitude: Float){
         val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,cloudcover,windspeed_10m,rain,precipitation_probability,snowfall", 1)
@@ -67,6 +76,8 @@ class MapsViewModel : ViewModel() {
                 val responseBody = response.body()
                 if (response.isSuccessful) {
                     Log.i("Sopan Result:", responseBody!!.result)
+
+                    _sopandata.value = response.body()
                 } else {
                     Log.e(MapsViewModel.TAG, "sopan onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
                 }
