@@ -6,12 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.Toast
-
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityHomeBinding
@@ -40,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-//        loginCheck()
+        loginCheck()
 
         binding.searchBtn.setOnClickListener{
             getLocation()

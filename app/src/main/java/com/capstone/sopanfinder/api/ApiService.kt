@@ -25,20 +25,6 @@ interface ApiService {
         @Query("token") token: String
     ): Call<Users>
 
-//    @GET("stories")
-//    fun getStories(
-//        @Header("Authorization") token: String,
-//        @Query("size") size: Int
-//    ): Call<FetchStory>
-//
-//    @Multipart
-//    @POST("stories")
-//    fun uploadImage(
-//        @Header("Authorization") token: String,
-//        @Part file: MultipartBody.Part,
-//        @Part("description") description: RequestBody
-//    ): Call<UploadStory>
-
     @GET("forecast")
     fun fetchWeather(
         @Query("latitude") latitude : Float,
