@@ -9,7 +9,6 @@ import com.capstone.sopanfinder.api.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Field
 
 class MapsViewModel : ViewModel() {
 
@@ -39,7 +38,7 @@ class MapsViewModel : ViewModel() {
                     fetchSopan(date, pv_demand, temp, wind_speed, rain_1h, snow_1h, clouds_all, percip_1h)
 
                     Log.d("latitude : ", responseBody.latitude.toString())
-                    Log.d("longitude : ", responseBody.longitude.toString())
+                    Log.d("temp : ", responseBody.hourly.temperature2m.toString())
                     Log.d("pv demand", pv_demand.toString())
                     Log.d("cloudcover : ", responseBody.hourly.cloudcover.toString())
                     Log.d("windspeed_10m : ", responseBody.hourly.windspeed10m.toString())
@@ -61,7 +60,7 @@ class MapsViewModel : ViewModel() {
     }
 
 
-    fun fetchSopan(date:List<String>, pv_demand:List<Int>, temp:List<Float>, wind_speed:List<Float>, rain_1h:List<Float>, snow_1h:List<Float>, clouds_all:List<Int>, percip_1h:List<Float>) {
+    fun fetchSopan(date:List<String>, pv_demand:List<Int>, temp: List<Float>, wind_speed:List<Float>, rain_1h:List<Float>, snow_1h:List<Float>, clouds_all:List<Int>, percip_1h:List<Float>) {
         val client = ApiConfig.getSopanApi().fetchResult(date, pv_demand, temp, wind_speed, rain_1h, snow_1h, clouds_all, percip_1h)
         client.enqueue(object : Callback<SopanResponse> {
             override fun onResponse(call: Call<SopanResponse>, response: Response<SopanResponse>) {

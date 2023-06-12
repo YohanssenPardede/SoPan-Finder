@@ -12,6 +12,8 @@ data class WeatherResponse(
 
 	@field:SerializedName("longitude")
 	val longitude: Float
+
+
 )
 
 data class HourlyUnits(
