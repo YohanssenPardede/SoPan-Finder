@@ -33,18 +33,6 @@ interface ApiService {
         @Query("forecast_days") forecast_days : Int
     ): Call<WeatherResponse>
 
-    @FormUrlEncoded
-    @POST("predict_text")
-    fun fetchResult(
-        @Field("date") date: List<String>,
-        @Field("pv_demand") pv_demand: List<Float>,
-        @Field("temp") temp: List<Float>,
-        @Field("wind_speed") wind_speed: List<Float>,
-        @Field("rain_1h") rain_1h: List<Float>,
-        @Field("snow_1h") snow_1h: List<Float>,
-        @Field("clouds_all") clouds_all: List<Float>,
-        @Field("percip_1h") percip_1h: List<Float>
-    ): Call<SopanResponse>
 
     @POST("predict_text")
     fun postData(@Body weatherData: WeatherData): Call<WeatherData>
