@@ -47,6 +47,7 @@
     <string name="buy_sopan">Buy Your SoPan!</string>
     <string name="shopee">Purchase at Shopee</string>
     <string name="tokped">Purchase at Tokopedia</string>
+    <string name="solarcelltype">"Solar Cell Type : "</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite">Favorites</string>

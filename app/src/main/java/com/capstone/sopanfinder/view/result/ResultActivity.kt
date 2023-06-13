@@ -52,11 +52,11 @@ class ResultActivity : AppCompatActivity() {
         val linkImg = intent.getStringExtra("linkImg")
 
         binding.tvSopanName.setText(name)
-        binding.tvCellType.setText(cell)
-        binding.tvPowerOutput.setText(power)
-        binding.tvEfficiency.setText(efficiency)
-        binding.tvDimensions.setText(dimension)
-        binding.tvWeight.setText(weight)
+        binding.tvCellType.setText("Solar Cell Type : " + cell)
+        binding.tvPowerOutput.setText("Power Output : " + power)
+        binding.tvEfficiency.setText("Efficiency : " + efficiency)
+        binding.tvDimensions.setText("Dimension : " + dimension)
+        binding.tvWeight.setText("Weight : " + weight)
 
         Glide.with(this).load(linkImg).into(binding.ivSopanPic);
 
