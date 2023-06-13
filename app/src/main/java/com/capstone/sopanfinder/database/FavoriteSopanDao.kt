@@ -10,10 +10,10 @@ interface FavoriteSopanDao {
     @Insert
     suspend fun insertFavorite(favoriteSopan: FavoriteSopan)
 
-    @Query("SELECT * FROM favorite_sopan ORDER BY id ASC")
+    @Query("SELECT * FROM favorite_sopan ORDER BY name_sopan ASC")
     fun getFavoriteSopan() : LiveData<List<FavoriteSopan>>
 
-    @Query("SELECT count(*) FROM favorite_sopan WHERE favorite_sopan.name_sopan = :name")
+    @Query("SELECT name_sopan FROM favorite_sopan WHERE name_sopan = :name")
     suspend fun checkSopan(name: String): String
 
     @Query("DELETE FROM favorite_sopan WHERE favorite_sopan.name_sopan = :name")

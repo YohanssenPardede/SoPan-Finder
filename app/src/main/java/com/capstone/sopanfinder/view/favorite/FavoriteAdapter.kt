@@ -3,13 +3,10 @@ package com.capstone.sopanfinder.view.favorite
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.capstone.sopanfinder.database.FavoriteSopan
 import com.capstone.sopanfinder.databinding.ItemFavoriteBinding
-import com.capstone.sopanfinder.view.ViewModelFactory
 import com.capstone.sopanfinder.view.result.ResultActivity
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
@@ -66,21 +63,11 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
                         it.putExtra("weight", favorite.weight)
                         it.putExtra("link", favorite.link)
                         it.putExtra("linkImg", favorite.linkImg)
-//                        it.putExtra(FavoriteActivity.EXTRA_LOCATION, favorite.location)
                     }
 
                     itemView.context.startActivity(intent)
                 }
-
-//                deleteIcon.setOnClickListener {
-//                    val favoriteViewModel = obtainViewModel()
-//                }
             }
-        }
-
-        private fun obtainViewModel(activity: AppCompatActivity): FavoriteViewModel {
-            val factory = ViewModelFactory.getInstance(activity.application)
-            return ViewModelProvider(activity, factory)[FavoriteViewModel::class.java]
         }
     }
 

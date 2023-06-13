@@ -16,10 +16,13 @@ import com.capstone.sopanfinder.view.ViewModelFactory
 import com.capstone.sopanfinder.view.favorite.FavoriteActivity
 import com.capstone.sopanfinder.view.favorite.FavoritePopup
 import com.capstone.sopanfinder.view.profile.ProfileActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
-//    private var flag : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,56 +80,19 @@ class ResultActivity : AppCompatActivity() {
         link: String, linkImg: String
     ) {
         var flag = 0
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val count = resultViewModel.checkSopan(nameSopan)
-//
-//            withContext(Dispatchers.Main) {
-//                if (count == nameSopan) {
-//                    flag = 1
-//                    binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
-//                } else {
-//                    flag = 0
-//                    binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_border_24)
-//                }
-//            }
-//        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = resultViewModel.checkSopan(nameSopan)
 
-//        binding.favoriteBtn.setOnClickListener {
-//            CoroutineScope(Dispatchers.IO).launch {
-//                val count = resultViewModel.checkSopan(nameSopan)
-//
-//                withContext(Dispatchers.Main) {
-//                    if (count != nameSopan) {
-//                        resultViewModel.insertFavorite(
-//                            id,
-//                            result,
-//                            nameSopan,
-//                            cellType,
-//                            powerOutput,
-//                            efficiency,
-//                            dimensions,
-//                            weight,
-//                            link,
-//                            linkImg
-//                        )
-//                        binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
-//                        flag = 1
-//
-//                        val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
-//                        intent.putExtra("popuptext", "Favorite successfully saved")
-//                        startActivity(intent)
-//                    } else if (count == nameSopan) {
-//                        resultViewModel.removeFavorite(nameSopan)
-//                        binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_border_24)
-//                        flag = 0
-//
-//                        val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
-//                        intent.putExtra("popuptext", "Favorite has been removed")
-//                        startActivity(intent)
-//                    }
-//                }
-//            }
-//        }
+            withContext(Dispatchers.Main) {
+                if (count == nameSopan) {
+                    flag = 1
+                    binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
+                } else {
+                    flag = 0
+                    binding.favoriteBtn.setImageResource(R.drawable.ic_favorite_border_24)
+                }
+            }
+        }
 
         binding.favoriteBtn.setOnClickListener {
             if (flag == 0) {
