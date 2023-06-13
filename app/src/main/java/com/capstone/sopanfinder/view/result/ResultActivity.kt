@@ -1,6 +1,5 @@
 package com.capstone.sopanfinder.view.result
 
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -29,10 +28,10 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.ab_gradient))
-        supportActionBar?.setElevation(0F)
+        supportActionBar?.setBackgroundDrawable(getDrawable(R.drawable.ab_gradient))
+        supportActionBar?.elevation = 0F
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(Html.fromHtml("<font color=\"transparent\">" + "" + "</font>"))
+        supportActionBar?.title = Html.fromHtml("<font color=\"transparent\">" + "" + "</font>")
 
         setResult()
     }

@@ -6,11 +6,13 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.capstone.sopanfinder.api.*
+import com.capstone.sopanfinder.api.ApiConfig
+import com.capstone.sopanfinder.api.PanelSpecification
+import com.capstone.sopanfinder.api.WeatherData
+import com.capstone.sopanfinder.api.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class MapsViewModel(application: Application) : AndroidViewModel(application)  {
     @SuppressLint("StaticFieldLeak")
@@ -18,6 +20,12 @@ class MapsViewModel(application: Application) : AndroidViewModel(application)  {
 
     private val _sopanData = MutableLiveData<WeatherData>()
     val sopanData: LiveData<WeatherData> = _sopanData
+
+    private val _error = MutableLiveData<Boolean>()
+    val error: LiveData<Boolean> = _error
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getWeatherData(latitude: Float, longitude: Float){
         val client = ApiConfig.getWeatherApi().fetchWeather(latitude, longitude, "temperature_2m,cloudcover,windspeed_10m,rain,precipitation_probability,snowfall", 1)
@@ -57,20 +65,25 @@ class MapsViewModel(application: Application) : AndroidViewModel(application)  {
     }
 
     fun fetchSopan(w : WeatherData) {
+        _isLoading.value = true
         val client = ApiConfig.getSopanApi().postData(w)
         client.enqueue(object : Callback<WeatherData> {
             override fun onResponse(call: Call<WeatherData>, response: Response<WeatherData>) {
                 val responseBody = response.body()
+                _isLoading.value = false
                 if (response.isSuccessful) {
                     Log.i("Sopan Result:", responseBody!!.result)
 
                     _sopanData.value = response.body()
                 } else {
+                    _error.value = true
                     Log.e(TAG, "fetchSopan onFailure \"onResponse\": ${response.body().toString()} & ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<WeatherData>, t: Throwable) {
+                _isLoading.value = false
+                _error.value = true
                 Log.e(TAG, "fetchSopan onFailure: ${t.message.toString()}")
             }
         })

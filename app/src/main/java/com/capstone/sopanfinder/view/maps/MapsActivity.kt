@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.R
@@ -20,7 +23,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
@@ -33,7 +35,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setTitle("SoPan Finder")
+        supportActionBar?.title = "SoPan Finder"
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -56,7 +58,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val latitude = lat.toFloat()
         val longitude = lon.toFloat()
 
-        //Get Weather Data From API, send to SoPan API and send intent to result activity
+        // Get Weather Data From API, send to SoPan API and send intent to result activity
         binding.confirmButton.setOnClickListener{
             mapsViewModel.getWeatherData(latitude, longitude)
 
@@ -92,7 +94,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(Intent(this@MapsActivity, HomeActivity::class.java))
             finish()
         }
+
+        mapsViewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+
+        mapsViewModel.error.observe(this) {
+            if (it)
+                Toast.makeText(this@MapsActivity, getString(R.string.error_fetch), Toast.LENGTH_SHORT).show()
+        }
     }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        } else {
+            binding.progressBar.visibility = View.GONE
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return super.onCreateOptionsMenu(menu)

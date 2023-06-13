@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp">
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,32 +21,49 @@
             android:elevation="30dp"
             map:cardCornerRadius="15dp"
             android:layout_alignParentBottom="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:layout_margin="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Is your location accurate?"
+                    android:text="@string/accurate_location"
                     android:layout_marginBottom="10dp"/>
+
                 <Button
                     android:id="@+id/confirm_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="YES"/>
+                    android:text="@string/yes"/>
+
                 <Button
                     android:id="@+id/no_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:backgroundTint="@color/red"
-                    android:text="NO"/>
+                    android:text="@string/no"/>
+
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
     </RelativeLayout>
+
 </fragment>

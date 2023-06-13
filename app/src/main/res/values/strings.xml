@@ -40,6 +40,9 @@
 
     <!-- MapsActivity -->
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="accurate_location">Is your location accurate?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <!-- ResultActivity -->
     <string name="solar_panel">Solar Panel</string>
@@ -48,6 +51,7 @@
     <string name="shopee">Purchase at Shopee</string>
     <string name="tokped">Purchase at Tokopedia</string>
     <string name="solarcelltype">"Solar Cell Type : "</string>
+    <string name="error_fetch">"Error fetching data</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite">Favorites</string>
