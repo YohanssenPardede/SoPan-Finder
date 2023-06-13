@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.sopanfinder.R
@@ -21,7 +19,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.gson.annotations.SerializedName
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -63,8 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.confirmButton.setOnClickListener{
             mapsViewModel.getWeatherData(latitude, longitude)
 
-
-            mapsViewModel.sopandata.observe(this){
+            mapsViewModel.sopanData.observe(this){
                 val result = it.result
                 val name = it.nameSopan
                 val efficiency = it.panelSpecification.efficiency
@@ -88,6 +84,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 intent.putExtra("linkImg", linkImg)
 
                 startActivity(intent)
+                finish()
             }
         }
 
