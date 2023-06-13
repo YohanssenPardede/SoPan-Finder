@@ -47,16 +47,16 @@ class FavoriteActivity : AppCompatActivity() {
         adapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
             override fun onItemClicked(favorites: FavoriteSopan) {
                 Intent(this@FavoriteActivity, ResultActivity::class.java).also {
-                    it.putExtra("id", favorites.id)
-                    it.putExtra("result", favorites.result)
-                    it.putExtra("name", favorites.nameSopan)
-                    it.putExtra("cell", favorites.cellType)
-                    it.putExtra("power", favorites.powerOutput)
-                    it.putExtra("efficiency", favorites.efficiency)
-                    it.putExtra("dimension", favorites.dimensions)
-                    it.putExtra("weight", favorites.weight)
-                    it.putExtra("link", favorites.link)
-                    it.putExtra("linkImg", favorites.linkImg)
+                    it.putExtra(ResultActivity.EXTRA_ID, favorites.id)
+                    it.putExtra(ResultActivity.EXTRA_RESULT, favorites.result)
+                    it.putExtra(ResultActivity.EXTRA_NAME, favorites.nameSopan)
+                    it.putExtra(ResultActivity.EXTRA_CELL, favorites.cellType)
+                    it.putExtra(ResultActivity.EXTRA_POWER, favorites.powerOutput)
+                    it.putExtra(ResultActivity.EXTRA_EFFICIENCY, favorites.efficiency)
+                    it.putExtra(ResultActivity.EXTRA_DIMENSION, favorites.dimensions)
+                    it.putExtra(ResultActivity.EXTRA_WEIGHT, favorites.weight)
+                    it.putExtra(ResultActivity.EXTRA_LINK, favorites.link)
+                    it.putExtra(ResultActivity.EXTRA_PHOTO, favorites.linkImg)
                     startActivity(it)
                 }
             }
@@ -90,11 +90,5 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-        const val EXTRA_NAME = "extra_name"
-        const val EXTRA_LOCATION = "extra_location"
-        const val EXTRA_PHOTO = "extra_photo"
     }
 }

@@ -38,16 +38,16 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun setResult(){
-        val id = intent.getIntExtra("id", 0)
-        val result = intent.getStringExtra("result").toString()
-        val name = intent.getStringExtra("name").toString()
-        val cell = intent.getStringExtra("cell").toString()
-        val power = intent.getStringExtra("power").toString()
-        val efficiency = intent.getStringExtra("efficiency").toString()
-        val dimension = intent.getStringExtra("dimension").toString()
-        val weight = intent.getStringExtra("weight").toString()
-        val link = intent.getStringExtra("link").toString()
-        val linkImg = intent.getStringExtra("linkImg").toString()
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        val result = intent.getStringExtra(EXTRA_RESULT).toString()
+        val name = intent.getStringExtra(EXTRA_NAME).toString()
+        val cell = intent.getStringExtra(EXTRA_CELL).toString()
+        val power = intent.getStringExtra(EXTRA_POWER).toString()
+        val efficiency = intent.getStringExtra(EXTRA_EFFICIENCY).toString()
+        val dimension = intent.getStringExtra(EXTRA_DIMENSION).toString()
+        val weight = intent.getStringExtra(EXTRA_WEIGHT).toString()
+        val link = intent.getStringExtra(EXTRA_LINK).toString()
+        val linkImg = intent.getStringExtra(EXTRA_PHOTO).toString()
 
         binding.tvSopanName.text = name
         binding.tvCellType.text = "Solar Cell Type: $cell"
@@ -101,7 +101,7 @@ class ResultActivity : AppCompatActivity() {
                 flag = 1
 
                 val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
-                intent.putExtra("popuptext", "Favorite successfully saved")
+                intent.putExtra(EXTRA_POPUP, "Favorite successfully saved")
                 startActivity(intent)
             } else if (flag == 1) {
                 resultViewModel.removeFavorite(nameSopan)
@@ -109,7 +109,7 @@ class ResultActivity : AppCompatActivity() {
                 flag = 0
 
                 val intent = Intent(this@ResultActivity, FavoritePopup::class.java)
-                intent.putExtra("popuptext", "Favorite has been removed")
+                intent.putExtra(EXTRA_POPUP, "Favorite has been removed")
                 startActivity(intent)
             }
         }
@@ -151,5 +151,18 @@ class ResultActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "ResultActivity"
+
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_RESULT = "extra_result"
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_CELL = "extra_cell"
+        const val EXTRA_POWER = "extra_power"
+        const val EXTRA_EFFICIENCY = "extra_efficiency"
+        const val EXTRA_DIMENSION = "extra_dimension"
+        const val EXTRA_WEIGHT = "extra_weight"
+        const val EXTRA_LINK = "extra_link"
+        const val EXTRA_PHOTO = "extra_photo"
+
+        const val EXTRA_POPUP = "extra_popup"
     }
 }

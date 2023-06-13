@@ -7,16 +7,14 @@ import android.animation.ValueAnimator
 import android.app.Activity
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.ColorUtils
-import androidx.core.graphics.alpha
-import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.databinding.ActivityFavoritePopupBinding
-import com.capstone.sopanfinder.databinding.ActivityHomeBinding
+import com.capstone.sopanfinder.view.result.ResultActivity
 
 class FavoritePopup : AppCompatActivity() {
 
@@ -38,7 +36,7 @@ class FavoritePopup : AppCompatActivity() {
         // ...
 
         val bundle = intent.extras
-        popupText = bundle?.getString("popuptext", "Text") ?: ""
+        popupText = bundle?.getString(ResultActivity.EXTRA_POPUP, "Text") ?: ""
         binding.popupWindowText.setText(popupText)
 //        popupButton = bundle?.getString("popupbtn", "Button") ?: ""
 //        darkStatusBar = bundle?.getBoolean("darkstatusbar", false) ?: false

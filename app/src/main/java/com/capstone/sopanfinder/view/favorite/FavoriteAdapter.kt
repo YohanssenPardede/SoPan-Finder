@@ -53,16 +53,16 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
                 btnViewDetail.setOnClickListener {
                     val intent = Intent(itemView.context, ResultActivity::class.java).also {
-                        it.putExtra("id", favorite.id)
-                        it.putExtra("result", favorite.result)
-                        it.putExtra("name", favorite.nameSopan)
-                        it.putExtra("cell", favorite.cellType)
-                        it.putExtra("power", favorite.powerOutput)
-                        it.putExtra("efficiency", favorite.efficiency)
-                        it.putExtra("dimension", favorite.dimensions)
-                        it.putExtra("weight", favorite.weight)
-                        it.putExtra("link", favorite.link)
-                        it.putExtra("linkImg", favorite.linkImg)
+                        it.putExtra(ResultActivity.EXTRA_ID, favorite.id)
+                        it.putExtra(ResultActivity.EXTRA_RESULT, favorite.result)
+                        it.putExtra(ResultActivity.EXTRA_NAME, favorite.nameSopan)
+                        it.putExtra(ResultActivity.EXTRA_CELL, favorite.cellType)
+                        it.putExtra(ResultActivity.EXTRA_POWER, favorite.powerOutput)
+                        it.putExtra(ResultActivity.EXTRA_EFFICIENCY, favorite.efficiency)
+                        it.putExtra(ResultActivity.EXTRA_DIMENSION, favorite.dimensions)
+                        it.putExtra(ResultActivity.EXTRA_WEIGHT, favorite.weight)
+                        it.putExtra(ResultActivity.EXTRA_LINK, favorite.link)
+                        it.putExtra(ResultActivity.EXTRA_PHOTO, favorite.linkImg)
                     }
 
                     itemView.context.startActivity(intent)
