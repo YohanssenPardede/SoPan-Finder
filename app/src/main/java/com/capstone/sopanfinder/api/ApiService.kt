@@ -33,7 +33,6 @@ interface ApiService {
         @Query("forecast_days") forecast_days : Int
     ): Call<WeatherResponse>
 
-
     @POST("predict_text")
     fun postData(@Body weatherData: WeatherData): Call<WeatherData>
 }
