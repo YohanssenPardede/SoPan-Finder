@@ -21,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.gson.annotations.SerializedName
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -49,62 +50,45 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val lat = intent.getDoubleExtra("Latitude", 0.0)
         val lon = intent.getDoubleExtra("Longitude", 0.0)
 
-        // Add a marker in Sydney and move the camera
         val location = LatLng(lat, lon)
         mMap.addMarker(MarkerOptions().position(location).title("You Are Here!"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
 
-//        Toast.makeText(applicationContext, "Latitude : $lat Longitude: $lon", Toast.LENGTH_SHORT).show()
         Log.i("MapsActivity", "Latitude : $lat Longitude: $lon")
 
         val latitude = lat.toFloat()
         val longitude = lon.toFloat()
 
-        //Get Weather Data From API, send to logcat and display graph data
+        //Get Weather Data From API, send to SoPan API and send intent to result activity
         binding.confirmButton.setOnClickListener{
             mapsViewModel.getWeatherData(latitude, longitude)
 
 
-            mapsViewModel.weatherData.observe(this) {
-                val time = it.hourly.time
-                val temp = it.hourly.temperature2m
-                val pv_demand = listOf(62, 69, 73, 65, 60, 59, 92, 80, 75, 91, 100, 100, 98, 29, 100, 30, 38, 40, 17, 37, 44, 43, 45, 59)
-                val clouds_all = it.hourly.cloudcover
-                val wind_speed = it.hourly.windspeed10m
-                val rain_1h = it.hourly.rain
-                val snow_1h = it.hourly.snowfall
-                val precip_1h = it.hourly.precipitationProbability
+            mapsViewModel.sopandata.observe(this){
+                val result = it.result
+                val name = it.nameSopan
+                val efficiency = it.panelSpecification.efficiency
+                val cell = it.panelSpecification.solarCellType
+                val power = it.panelSpecification.powerOutput
+                val dimension = it.panelSpecification.dimensions
+                val weight = it.panelSpecification.weight
+                val link = it.link
+                val linkImg = it.linkImg
 
-                Log.d(
-                    "Maps Activity", "setResult temp $temp ||" +
-                            " clouds_all $clouds_all ||" +
-                            " wind_speed $wind_speed ||" +
-                            " rain $rain_1h ||" +
-                            " snow $snow_1h ||" +
-                            " precip $precip_1h ||"
-                )
-
-//                val intent = Intent(this, ResultActivity::class.java)
                 val intent = Intent(this@MapsActivity, ResultActivity::class.java)
 
-                intent.putExtra("time", time.toString())
-                intent.putExtra("temp", temp.toString())
-                intent.putExtra("clouds", clouds_all.toString())
-                intent.putExtra("wind", wind_speed.toString())
-                intent.putExtra("rain", rain_1h.toString())
-                intent.putExtra("snow", snow_1h.toString())
-                intent.putExtra("precip", precip_1h.toString())
-                intent.putExtra("pv", pv_demand.toString())
+                intent.putExtra("result", result)
+                intent.putExtra("name", name)
+                intent.putExtra("cell", cell)
+                intent.putExtra("power", power)
+                intent.putExtra("efficiency", efficiency)
+                intent.putExtra("dimension", dimension)
+                intent.putExtra("weight", weight)
+                intent.putExtra("link", link)
+                intent.putExtra("linkImg", linkImg)
 
                 startActivity(intent)
-
-//                intent.putExtra("WEATHER_TEMP", temp)
-//                intent2.putExtra(EXTRA_MESSAGE1, message2)
-//                startActivity(intent)
             }
-
-//            startActivity(Intent(this@MapsActivity, GraphActivity::class.java))
-//            finish()
         }
 
         binding.noButton.setOnClickListener{

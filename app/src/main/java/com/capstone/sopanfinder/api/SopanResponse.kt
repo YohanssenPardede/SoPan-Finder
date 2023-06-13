@@ -55,21 +55,21 @@ data class SopanResponse(
     @field:SerializedName("link_img")
     val linkImg: String
 )
-
-data class PanelSpecification(
-
-    @field:SerializedName("efficiency")
-    val efficiency: String,
-
-    @field:SerializedName("power_output")
-    val powerOutput: String,
-
-    @field:SerializedName("weight")
-    val weight: String,
-
-    @field:SerializedName("solar_cell_type")
-    val solarCellType: String,
-
-    @field:SerializedName("dimensions")
-    val dimensions: String
-)
+//
+//data class PanelSpecification(
+//
+//    @field:SerializedName("efficiency")
+//    val efficiency: String,
+//
+//    @field:SerializedName("power_output")
+//    val powerOutput: String,
+//
+//    @field:SerializedName("weight")
+//    val weight: String,
+//
+//    @field:SerializedName("solar_cell_type")
+//    val solarCellType: String,
+//
+//    @field:SerializedName("dimensions")
+//    val dimensions: String
+//)

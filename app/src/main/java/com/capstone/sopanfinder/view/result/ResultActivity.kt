@@ -37,54 +37,34 @@ class ResultActivity : AppCompatActivity() {
 
 
         setFavoriteFlag()
-        val time = intent.getStringExtra("time")
-        val temp = intent.getStringExtra("temp")
-        val pv = intent.getStringExtra("pv")
-        val clouds = intent.getStringExtra("clouds")
-        val wind = intent.getStringExtra("wind")
-        val rain = intent.getStringExtra("rain")
-        val snow = intent.getStringExtra("snow")
-        val precip = intent.getStringExtra("precip")
-        Log.d("RESULT ACT", "\nTime: $time \n Temp : $temp \n Pv Demand: $pv \n Clouds: $clouds \n Wind: $wind \n Rain: $rain \n Snow: $snow \n Precip: $precip")
-
-
-//        val name = intent.getStringExtra(FavoriteActivity.EXTRA_NAME)
-//        val location = intent.getStringExtra(FavoriteActivity.EXTRA_LOCATION)
-//        val photo = intent.getIntExtra(FavoriteActivity.EXTRA_PHOTO, 0)
+        setResult()
     }
 
     private fun setResult(){
+        val result = intent.getStringExtra("result")
+        val name = intent.getStringExtra("name")
+        val cell = intent.getStringExtra("cell")
+        val power = intent.getStringExtra("power")
+        val efficiency = intent.getStringExtra("efficiency")
+        val dimension = intent.getStringExtra("dimension")
+        val weight = intent.getStringExtra("weight")
+        val link = intent.getStringExtra("link")
+        val linkImg = intent.getStringExtra("linkImg")
 
+        binding.tvSopanName.setText(name)
+        binding.tvCellType.setText(cell)
+        binding.tvPowerOutput.setText(power)
+        binding.tvEfficiency.setText(efficiency)
+        binding.tvDimensions.setText(dimension)
+        binding.tvWeight.setText(weight)
 
+        Glide.with(this).load(linkImg).into(binding.ivSopanPic);
 
-
-
-//
-//        mapsViewModel.sopandata.observe(this) { sopandata ->
-//            val name = sopandata.nameSopan
-//            val cell = sopandata.panelSpecification.solarCellType
-//            val power = sopandata.panelSpecification.powerOutput
-//            val efficiency = sopandata.panelSpecification.efficiency
-//            val dimensions = sopandata.panelSpecification.dimensions
-//            val weight = sopandata.panelSpecification.weight
-//            val imagelink = sopandata.linkImg
-//            val link = sopandata.link
-//
-//            binding.tvSopanName.setText(name)
-//            binding.tvCellType.setText(cell)
-//            binding.tvPowerOutput.setText(power)
-//            binding.tvEfficiency.setText(efficiency)
-//            binding.tvDimensions.setText(dimensions)
-//            binding.tvWeight.setText(weight)
-//
-//            Glide.with(this).load(imagelink).into(binding.ivSopanPic);
-//
-//            binding.commerceBtn.setOnClickListener{
-//                val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
-//                val linkintent = Intent(Intent.ACTION_VIEW, uri)
-//                startActivity(linkintent)
-//            }
-//        }
+        binding.commerceBtn.setOnClickListener{
+            val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
+            val linkintent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(linkintent)
+        }
     }
 
     private fun setFavoriteFlag() {

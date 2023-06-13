@@ -45,4 +45,7 @@ interface ApiService {
         @Field("clouds_all") clouds_all: List<Float>,
         @Field("percip_1h") percip_1h: List<Float>
     ): Call<SopanResponse>
+
+    @POST("predict_text")
+    fun postData(@Body weatherData: WeatherData): Call<WeatherData>
 }

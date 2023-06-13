@@ -34,22 +34,22 @@ data class HourlyUnits(
 data class Hourly(
 
 	@field:SerializedName("temperature_2m")
-	val temperature2m: List<Double>,
+	val temperature2m: List<Float>,
 
 	@field:SerializedName("cloudcover")
 	val cloudcover: List<Float>,
 
 	@field:SerializedName("windspeed_10m")
-	val windspeed10m : List<Double>,
+	val windspeed10m : List<Float>,
 
 	@field:SerializedName("rain")
-	val rain : List<Double>,
+	val rain : List<Float>,
 
 	@field:SerializedName("precipitation_probability")
-	val precipitationProbability : List<Double>,
+	val precipitationProbability : List<Float>,
 
 	@field:SerializedName("snowfall")
-	val snowfall : List<Double>,
+	val snowfall : List<Float>,
 
 	@field:SerializedName("time")
 	val time : List<String>,
