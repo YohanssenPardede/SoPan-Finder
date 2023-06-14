@@ -9,7 +9,7 @@ import com.capstone.sopanfinder.database.FavoriteSopan
 import com.capstone.sopanfinder.databinding.ItemFavoriteBinding
 import com.capstone.sopanfinder.view.result.ResultActivity
 
-class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
+class FavoriteAdapter(private val onDeleteClick: (FavoriteSopan) -> Unit) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -30,8 +30,8 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val favorite = listFavorite[position]
         holder.bind(favorite)
-        holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listFavorite[holder.adapterPosition])
+        holder.view.deleteIcon.setOnClickListener {
+            onDeleteClick(favorite)
         }
     }
 
@@ -39,7 +39,7 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
         return listFavorite.size
     }
 
-    class ViewHolder(private val view: ItemFavoriteBinding) : RecyclerView.ViewHolder(view.root) {
+    class ViewHolder(val view: ItemFavoriteBinding) : RecyclerView.ViewHolder(view.root) {
         fun bind(favorite: FavoriteSopan) {
             view.apply {
                 Glide.with(itemView)

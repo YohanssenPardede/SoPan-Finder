@@ -10,4 +10,8 @@ class FavoriteViewModel(application: Application) : ViewModel() {
     private val mRepository: SopanRepository = SopanRepository(application)
 
     fun getAllFavoriteSopan(): LiveData<List<FavoriteSopan>> = mRepository.getAllFavoriteSopan()
+
+    fun removeFavorite(nameSopan: String) {
+        mRepository.removeFavorite(nameSopan)
+    }
 }

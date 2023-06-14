@@ -33,11 +33,14 @@ class FavoriteActivity : AppCompatActivity() {
                 adapter.setListFavorite(it)
         }
 
+        adapter = FavoriteAdapter {
+            favoriteViewModel.removeFavorite(it.nameSopan.toString())
+        }
+
         setFavoriteData()
     }
 
     private fun setFavoriteData() {
-        adapter = FavoriteAdapter()
         binding?.apply {
             rvFavorite.layoutManager = LinearLayoutManager(this@FavoriteActivity)
             rvFavorite.setHasFixedSize(true)

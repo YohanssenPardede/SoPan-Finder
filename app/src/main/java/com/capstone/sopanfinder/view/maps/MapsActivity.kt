@@ -86,6 +86,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 intent.putExtra(ResultActivity.EXTRA_PHOTO, linkImg)
 
                 startActivity(intent)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 finish()
             }
         }
