@@ -33,6 +33,7 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setAction() {
+
         binding.edRegisterName.doOnTextChanged { _, _, _, count ->
             if (count == 0)
                 binding.registerNameContainer.error = getString(R.string.null_name)
@@ -41,21 +42,28 @@ class SignupActivity : AppCompatActivity() {
         }
 
         binding.edRegisterEmail.doOnTextChanged { text, _, _, count ->
-            if (count == 0)
-                binding.registerEmailContainer.error = getString(R.string.null_email)
-            else if (!Patterns.EMAIL_ADDRESS.matcher(text.toString()).matches())
+            if (!Patterns.EMAIL_ADDRESS.matcher(text.toString()).matches())
                 binding.registerEmailContainer.error = getString(R.string.invalid_email)
+            else if (count == 0)
+                binding.registerEmailContainer.error = getString(R.string.null_email)
             else
                 binding.registerEmailContainer.error = null
         }
 
         binding.edRegisterPassword.doOnTextChanged { text, _, _, count ->
-            if (count == 0)
-                binding.registerPasswordContainer.error = getString(R.string.null_password)
-            else if (text!!.length < 8)
+            if (text!!.length < 8)
                 binding.registerPasswordContainer.error = getString(R.string.minimal_characters)
+            else if (count == 0)
+                binding.registerPasswordContainer.error = getString(R.string.null_password)
             else
                 binding.registerPasswordContainer.error = null
+        }
+
+        binding.edRegisterConfirm.doOnTextChanged { _, _, _, count ->
+            if (count == 0)
+                binding.registerConfirmContainer.error = getString(R.string.null_confirm)
+            else
+                binding.registerConfirmContainer.error = null
         }
 
         binding.btnSignup.setOnClickListener {
@@ -64,7 +72,7 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.edRegisterPassword.text.toString()
             val confirmPw = binding.edRegisterConfirm.text.toString()
 
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPw.isEmpty()) {
                 if (name.isEmpty()) {
                     binding.apply {
                         registerNameContainer.error = resources.getString(R.string.null_name)
@@ -101,6 +109,15 @@ class SignupActivity : AppCompatActivity() {
                         edRegisterPassword.requestFocus()
                     }
                     Toast.makeText(this, resources.getString(R.string.minimal_characters), Toast.LENGTH_SHORT).show()
+                } else
+                    binding.registerPasswordContainer.error = null
+
+                if (confirmPw.isEmpty()) {
+                    binding.apply {
+                        registerConfirmContainer.error = resources.getString(R.string.null_confirm)
+                        edRegisterPassword.requestFocus()
+                    }
+                    Toast.makeText(this, resources.getString(R.string.null_password), Toast.LENGTH_SHORT).show()
                 } else
                     binding.registerPasswordContainer.error = null
 

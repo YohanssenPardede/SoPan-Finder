@@ -26,6 +26,7 @@
     <string name="null_name">Name cannot be empty</string>
     <string name="null_email">E-mail cannot be empty</string>
     <string name="null_password">Password cannot be empty</string>
+    <string name="null_confirm">Confirm Password cannot be empty</string>
     <string name="invalid_email">Invalid E-mail Address</string>
     <string name="success_login">Login Successful. Welcome %s!</string>
     <string name="success_signup">Sign Up Successful. Try logging into your account.</string>
