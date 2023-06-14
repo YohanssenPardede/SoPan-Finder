@@ -7,8 +7,8 @@ import com.capstone.sopanfinder.database.SopanRepository
 class ResultViewModel(application: Application) : ViewModel() {
     private val mRepository: SopanRepository = SopanRepository(application)
 
-    fun insertFavorite(id: Int, result: String, nameSopan: String, cellType: String, powerOutput: String, efficiency: String, weight: String, dimensions: String, link: String, linkImg: String) {
-        mRepository.insertFavorite(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg)
+    fun insertFavorite(id: Int, result: String, nameSopan: String, cellType: String, powerOutput: String, efficiency: String, weight: String, dimensions: String, link: String, linkImg: String, lat: Double, lon: Double) {
+        mRepository.insertFavorite(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg, lat, lon)
     }
 
     suspend fun checkSopan(nameSopan: String) = mRepository.checkSopan(nameSopan)

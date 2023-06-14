@@ -60,6 +60,8 @@ class FavoriteActivity : AppCompatActivity() {
                     it.putExtra(ResultActivity.EXTRA_WEIGHT, favorites.weight)
                     it.putExtra(ResultActivity.EXTRA_LINK, favorites.link)
                     it.putExtra(ResultActivity.EXTRA_PHOTO, favorites.linkImg)
+                    it.putExtra(ResultActivity.EXTRA_LAT, favorites.latitude)
+                    it.putExtra(ResultActivity.EXTRA_LON, favorites.longitude)
                     startActivity(it)
                 }
             }

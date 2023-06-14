@@ -1,6 +1,8 @@
 package com.capstone.sopanfinder.view.result
 
+import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.text.Html
@@ -47,24 +49,29 @@ class ResultActivity : AppCompatActivity() {
         val weight = intent.getStringExtra(EXTRA_WEIGHT).toString()
         val link = intent.getStringExtra(EXTRA_LINK).toString()
         val linkImg = intent.getStringExtra(EXTRA_PHOTO).toString()
+        val lat = intent.getDoubleExtra(EXTRA_LAT, 0.0)
+        val lon = intent.getDoubleExtra(EXTRA_LON, 0.0)
 
-        binding.tvSopanName.text = name
-        binding.tvCellType.text = "Solar Cell Type: $cell"
-        binding.tvPowerOutput.text = "Power Output: $power"
-        binding.tvEfficiency.text = "Efficiency: $efficiency"
-        binding.tvDimensions.text = "Dimension: >$dimension"
-        binding.tvWeight.text = "Weight: $weight"
+        binding.apply {
+            tvSopanName.text = name
+            tvCellType.text = "Solar Cell Type: $cell"
+            tvPowerOutput.text = "Power Output: $power"
+            tvEfficiency.text = "Efficiency: $efficiency"
+            tvDimensions.text = "Dimension: >$dimension"
+            tvWeight.text = "Weight: $weight"
+            tvAddress.text = getAddress(this@ResultActivity, lat, lon)
 
-        Glide.with(this).load(linkImg).into(binding.ivSopanPic);
+            Glide.with(this@ResultActivity).load(linkImg).into(ivSopanPic);
 
-        binding.commerceBtn.setOnClickListener{
-            val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
-            val linkIntent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(linkIntent)
+            commerceBtn.setOnClickListener{
+                val uri: Uri = Uri.parse(link) // missing 'http://' will cause crashed
+                val linkIntent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(linkIntent)
+            }
         }
 
         val resultViewModel = obtainViewModel(this@ResultActivity)
-        setFavoriteFlag(resultViewModel, id, result, name, cell, power, efficiency, dimension, weight, link, linkImg)
+        setFavoriteFlag(resultViewModel, id, result, name, cell, power, efficiency, dimension, weight, link, linkImg, lat, lon)
     }
 
     private fun setFavoriteFlag(
@@ -76,7 +83,10 @@ class ResultActivity : AppCompatActivity() {
         powerOutput: String,
         efficiency: String,
         weight: String, dimensions: String,
-        link: String, linkImg: String
+        link: String,
+        linkImg: String,
+        lat: Double,
+        lon: Double
     ) {
         var flag = 0
         CoroutineScope(Dispatchers.IO).launch {
@@ -95,7 +105,7 @@ class ResultActivity : AppCompatActivity() {
 
         binding.favoriteBtn.setOnClickListener {
             if (flag == 0) {
-                resultViewModel.insertFavorite(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg)
+                resultViewModel.insertFavorite(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg, lat ,lon)
                 binding.favoriteBtn.setImageResource(R.drawable.ic_baseline_favorite_24)
                 flag = 1
 
@@ -112,6 +122,20 @@ class ResultActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun getAddress(context: Context, lat: Double, lon: Double): String {
+        val geocoder = Geocoder(context)
+        val location = geocoder.getFromLocation(lat, lon, 1)
+
+        val fullAddress = if (location!!.size > 0) {
+            val address = location[0]
+            address.getAddressLine(0)
+        } else {
+            context.getString(R.string.null_location)
+        }
+
+        return fullAddress
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): ResultViewModel {
@@ -161,6 +185,8 @@ class ResultActivity : AppCompatActivity() {
         const val EXTRA_WEIGHT = "extra_weight"
         const val EXTRA_LINK = "extra_link"
         const val EXTRA_PHOTO = "extra_photo"
+        const val EXTRA_LAT = "extra_lat"
+        const val EXTRA_LON = "extra_lon"
 
         const val EXTRA_POPUP = "extra_popup"
     }

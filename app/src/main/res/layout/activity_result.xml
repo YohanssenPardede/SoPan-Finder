@@ -59,6 +59,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/address"
+                android:textSize="11sp" />
+
+            <TextView
                 android:id="@+id/specs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,40 +75,39 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:id="@+id/tv_cell_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Solar Cell Type"
+                android:text="@string/cell_type"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_power_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Power Output"
+                android:text="@string/output"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_efficiency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Efficiency"
+                android:text="@string/efficiency"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_dimensions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dimensions"
+                android:text="@string/dimensions"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight"
+                android:text="@string/weight"
                 android:textSize="12sp" />
         </LinearLayout>
 

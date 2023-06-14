@@ -43,6 +43,7 @@
     <string name="accurate_location">Is your location accurate?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="null_location">Location Unknown</string>
 
     <!-- ResultActivity -->
     <string name="solar_panel">Solar Panel</string>
@@ -52,6 +53,11 @@
     <string name="tokped">Purchase at Tokopedia</string>
     <string name="solarcelltype">"Solar Cell Type : "</string>
     <string name="error_fetch">"Error fetching data</string>
+    <string name="cell_type">Solar Cell Type</string>
+    <string name="output">Power Output</string>
+    <string name="efficiency">Efficiency</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="weight">Weight</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite">Favorites</string>
@@ -60,6 +66,7 @@
     <string name="delete_icon">Delete Icon</string>
     <string name="view_detail">View Detail</string>
     <string name="profile">Profile</string>
+    <string name="address">User Address</string>
 
     <string-array name="sopan_names">
         <item>Penesonic Solar Panel</item>

@@ -51,7 +51,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val location = LatLng(lat, lon)
         mMap.addMarker(MarkerOptions().position(location).title("You Are Here!"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
 
         Log.i("MapsActivity", "Latitude : $lat Longitude: $lon")
 
@@ -84,6 +84,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 intent.putExtra(ResultActivity.EXTRA_WEIGHT, weight)
                 intent.putExtra(ResultActivity.EXTRA_LINK, link)
                 intent.putExtra(ResultActivity.EXTRA_PHOTO, linkImg)
+                intent.putExtra(ResultActivity.EXTRA_LAT, lat)
+                intent.putExtra(ResultActivity.EXTRA_LON, lon)
 
                 startActivity(intent)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK

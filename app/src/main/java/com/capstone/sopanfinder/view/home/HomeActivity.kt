@@ -65,7 +65,6 @@ class HomeActivity : AppCompatActivity() {
         }
         task.addOnSuccessListener {
             if(it!= null){
-//                Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
                 Log.d("TAG", "${it.latitude} ${it.longitude}")
 
                 lat = it.latitude

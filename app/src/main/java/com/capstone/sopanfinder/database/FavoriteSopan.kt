@@ -38,5 +38,11 @@ data class FavoriteSopan(
     var link: String? = "",
 
     @ColumnInfo(name = "link_img")
-    var linkImg: String? = ""
+    var linkImg: String? = "",
+
+    @ColumnInfo(name = "latitude")
+    var latitude: Double = 0.0,
+
+    @ColumnInfo(name = "longitude")
+    var longitude: Double = 0.0
 ): Parcelable

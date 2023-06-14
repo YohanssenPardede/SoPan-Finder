@@ -16,9 +16,9 @@ class SopanRepository(application: Application) {
 
     fun getAllFavoriteSopan(): LiveData<List<FavoriteSopan>> = mSopanDao.getFavoriteSopan()
 
-    fun insertFavorite(id: Int, result: String, nameSopan: String, cellType: String, powerOutput: String, efficiency: String, weight: String, dimensions: String, link: String, linkImg: String) {
+    fun insertFavorite(id: Int, result: String, nameSopan: String, cellType: String, powerOutput: String, efficiency: String, weight: String, dimensions: String, link: String, linkImg: String, lat: Double, lon: Double) {
         CoroutineScope(Dispatchers.IO).launch {
-            val sopan = FavoriteSopan(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg)
+            val sopan = FavoriteSopan(id, result, nameSopan, cellType, powerOutput, efficiency, dimensions, weight, link, linkImg, lat, lon)
             mSopanDao.insertFavorite(sopan)
         }
     }

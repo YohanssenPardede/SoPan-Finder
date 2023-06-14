@@ -1,10 +1,13 @@
 package com.capstone.sopanfinder.view.favorite
 
+import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.capstone.sopanfinder.R
 import com.capstone.sopanfinder.database.FavoriteSopan
 import com.capstone.sopanfinder.databinding.ItemFavoriteBinding
 import com.capstone.sopanfinder.view.result.ResultActivity
@@ -49,7 +52,7 @@ class FavoriteAdapter(private val onDeleteClick: (FavoriteSopan) -> Unit) : Recy
                     .into(view.ivSopan)
 
                 tvSopanName.text = favorite.nameSopan
-                tvSopanLocation.text = "Location Dummy"
+                tvSopanLocation.text = getAddress(itemView.context, favorite.latitude, favorite.longitude)
 
                 btnViewDetail.setOnClickListener {
                     val intent = Intent(itemView.context, ResultActivity::class.java).also {
@@ -68,6 +71,20 @@ class FavoriteAdapter(private val onDeleteClick: (FavoriteSopan) -> Unit) : Recy
                     itemView.context.startActivity(intent)
                 }
             }
+        }
+
+        private fun getAddress(context: Context, lat: Double, lon: Double): String {
+            val geocoder = Geocoder(context)
+            val location = geocoder.getFromLocation(lat, lon, 1)
+
+            val fullAddress = if (location!!.size > 0) {
+                val address = location[0]
+                address.subAdminArea + ", " + address.adminArea
+            } else {
+                context.getString(R.string.null_location)
+            }
+
+            return fullAddress
         }
     }
 
