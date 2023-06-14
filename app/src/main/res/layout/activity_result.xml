@@ -59,12 +59,27 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/location_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/locationheader"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:text="@string/address"
                 android:textSize="11sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="#d8d8d8" />
 
             <TextView
                 android:id="@+id/specs"
@@ -111,40 +126,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:background="#d8d8d8" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                android:fontFamily="@font/inter_bold"-->
-<!--                android:text="@string/instructions"-->
-<!--                android:textSize="15sp"-->
-<!--                android:textStyle="bold" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:text="@string/inst_detail"-->
-<!--                android:textSize="12sp" />-->
-<!--            -->
-<!--        </LinearLayout>-->
-
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
@@ -161,33 +142,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="25dp"-->
-<!--            android:layout_marginEnd="25dp"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_marginStart="5dp"-->
-<!--                android:src="@drawable/shopee" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/commerce_btn"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:fontFamily="@font/alegreya_sans_sc_bold"-->
-<!--                android:textAllCaps="false"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
-<!--                android:textSize="18sp"-->
-<!--                android:text="@string/shopee" />-->
-
-<!--        </LinearLayout>-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -202,6 +156,8 @@
                 android:layout_marginStart="3dp"
                 android:src="@drawable/toped" />
 
+
+
             <Button
                 android:id="@+id/commerce_btn"
                 android:layout_width="match_parent"
@@ -214,6 +170,7 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 

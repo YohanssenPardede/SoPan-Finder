@@ -58,6 +58,7 @@
     <string name="efficiency">Efficiency</string>
     <string name="dimensions">Dimensions</string>
     <string name="weight">Weight</string>
+    <string name="locationheader">SoPan Location</string>
 
     <!-- FavoriteActivity -->
     <string name="favorite">Favorites</string>
