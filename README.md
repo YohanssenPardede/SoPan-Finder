@@ -29,5 +29,5 @@ products related to the solar panel recommended by the system.
 ### Branch
 Our repository has 3 branches:
 * machine-learning to see the progress of machine learning.
-* back-end_API to see the progress of Cloud Computing
+* auth-CC, predict-API and landing-page to see the progress of Cloud Computing
 * mobile-dev to see the progress of Mobile Developer
