@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SoPanFinder"
         tools:targetApi="31">
+
         <activity
             android:name=".view.favorite.FavoritePopup"
             android:theme="@style/AppTheme_translucent"
