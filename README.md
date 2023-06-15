@@ -27,7 +27,8 @@ products related to the solar panel recommended by the system.
 | M350DSY0442 | Nasywa Choiriana Safitri | Universitas Sumatera Utara | Machine Learning |
 
 ### Branch
-Our repository has 3 branches:
+Our repository has 5 branches:
 * machine-learning to see the progress of machine learning.
 * auth-CC, and predict-API to see the progress of Cloud Computing
 * mobile-dev to see the progress of Mobile Developer
+* main to see profile our repository
