@@ -1,6 +1,6 @@
 # SoPan-Finder
 
-![Alt text]()
+![Alt text](logo SoPan.png)
 
 ## Introduction
 SoPan Finder is an innovative solar panel recommendation platform that leverages weather data collection, machine learning algorithms, and real-time energy production prediction to assist individuals and businesses in making informed decisions about adopting solar energy. Our mission is to simplify the process of assessing the suitability of installing solar panels and empower users to embrace renewable energy solutions. 
