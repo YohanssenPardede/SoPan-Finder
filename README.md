@@ -26,6 +26,10 @@ products related to the solar panel recommended by the system.
 | M350DSX0236 | Yohanssen Pradana Pardede | Universitas Sumatera Utara | Machine Learning |
 | M350DSY0442 | Nasywa Choiriana Safitri | Universitas Sumatera Utara | Machine Learning |
 
+## Project Scope
+* A system to predict solar panel performance
+* A system to provide solar panel recommendations to users
+
 ### Branch
 Our repository has 5 branches:
 * machine-learning to see the progress of machine learning.
